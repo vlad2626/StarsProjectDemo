@@ -13,13 +13,16 @@ Public Class Member
         End Get
     End Property
     Public Sub clear()
-        '_Member = New member
+        _Member = New Member(Nothing)
     End Sub
 
     Public Function getAllMembers() As SqlDataReader
         Dim objDr As SqlDataReader
         objDr = myDB.getDataReaderBySP("sp_getAllMembers", Nothing)
         Return objDr
+    End Function
+    Public Function addMember() As SqlDataAdapter
+
     End Function
 
 

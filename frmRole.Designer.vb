@@ -62,6 +62,8 @@ Partial Class frmRole
         Me.errP = New System.Windows.Forms.ErrorProvider(Me.components)
         Me.grpMembers = New System.Windows.Forms.GroupBox()
         Me.lstMembers = New System.Windows.Forms.ListBox()
+        Me.btnAdd = New System.Windows.Forms.Button()
+        Me.btnRemove = New System.Windows.Forms.Button()
         Me.ToolStrip1.SuspendLayout()
         Me.grpNew.SuspendLayout()
         Me.grpRoles.SuspendLayout()
@@ -406,6 +408,8 @@ Partial Class frmRole
         '
         'grpMembers
         '
+        Me.grpMembers.Controls.Add(Me.btnRemove)
+        Me.grpMembers.Controls.Add(Me.btnAdd)
         Me.grpMembers.Controls.Add(Me.lstMembers)
         Me.grpMembers.Location = New System.Drawing.Point(732, 132)
         Me.grpMembers.Name = "grpMembers"
@@ -421,6 +425,24 @@ Partial Class frmRole
         Me.lstMembers.Name = "lstMembers"
         Me.lstMembers.Size = New System.Drawing.Size(347, 199)
         Me.lstMembers.TabIndex = 0
+        '
+        'btnAdd
+        '
+        Me.btnAdd.Location = New System.Drawing.Point(31, 242)
+        Me.btnAdd.Name = "btnAdd"
+        Me.btnAdd.Size = New System.Drawing.Size(149, 37)
+        Me.btnAdd.TabIndex = 1
+        Me.btnAdd.Text = "Add"
+        Me.btnAdd.UseVisualStyleBackColor = True
+        '
+        'btnRemove
+        '
+        Me.btnRemove.Location = New System.Drawing.Point(212, 245)
+        Me.btnRemove.Name = "btnRemove"
+        Me.btnRemove.Size = New System.Drawing.Size(165, 33)
+        Me.btnRemove.TabIndex = 2
+        Me.btnRemove.Text = "Remove"
+        Me.btnRemove.UseVisualStyleBackColor = True
         '
         'frmRole
         '
@@ -493,4 +515,6 @@ Partial Class frmRole
     Friend WithEvents btnReport As Button
     Friend WithEvents grpMembers As GroupBox
     Friend WithEvents lstMembers As ListBox
+    Friend WithEvents btnRemove As Button
+    Friend WithEvents btnAdd As Button
 End Class
