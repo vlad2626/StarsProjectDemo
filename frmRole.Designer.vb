@@ -25,14 +25,24 @@ Partial Class frmRole
         Me.components = New System.ComponentModel.Container()
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
         Me.ToolStripSeparator11 = New System.Windows.Forms.ToolStripSeparator()
+        Me.tsbHome = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator9 = New System.Windows.Forms.ToolStripSeparator()
+        Me.tsbMember = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
+        Me.tsbRole = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
+        Me.tsbEvent = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator5 = New System.Windows.Forms.ToolStripSeparator()
+        Me.tsbRSVP = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator6 = New System.Windows.Forms.ToolStripSeparator()
+        Me.tsbCourse = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
+        Me.tsbSemester = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator7 = New System.Windows.Forms.ToolStripSeparator()
+        Me.tsbTutor = New System.Windows.Forms.ToolStripButton()
+        Me.tsbLogout = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator8 = New System.Windows.Forms.ToolStripSeparator()
+        Me.tsbHelp = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.grpNew = New System.Windows.Forms.GroupBox()
@@ -40,6 +50,7 @@ Partial Class frmRole
         Me.grpRoles = New System.Windows.Forms.GroupBox()
         Me.lstRoles = New System.Windows.Forms.ListBox()
         Me.grpEdit = New System.Windows.Forms.GroupBox()
+        Me.btnReport = New System.Windows.Forms.Button()
         Me.btnCancel = New System.Windows.Forms.Button()
         Me.btnSave = New System.Windows.Forms.Button()
         Me.txtDesc = New System.Windows.Forms.TextBox()
@@ -49,23 +60,15 @@ Partial Class frmRole
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.tslStatus = New System.Windows.Forms.ToolStripStatusLabel()
         Me.errP = New System.Windows.Forms.ErrorProvider(Me.components)
-        Me.btnReport = New System.Windows.Forms.Button()
-        Me.tsbHome = New System.Windows.Forms.ToolStripButton()
-        Me.tsbMember = New System.Windows.Forms.ToolStripButton()
-        Me.tsbRole = New System.Windows.Forms.ToolStripButton()
-        Me.tsbEvent = New System.Windows.Forms.ToolStripButton()
-        Me.tsbRSVP = New System.Windows.Forms.ToolStripButton()
-        Me.tsbCourse = New System.Windows.Forms.ToolStripButton()
-        Me.tsbSemester = New System.Windows.Forms.ToolStripButton()
-        Me.tsbTutor = New System.Windows.Forms.ToolStripButton()
-        Me.tsbLogout = New System.Windows.Forms.ToolStripButton()
-        Me.tsbHelp = New System.Windows.Forms.ToolStripButton()
+        Me.grpMembers = New System.Windows.Forms.GroupBox()
+        Me.lstMembers = New System.Windows.Forms.ListBox()
         Me.ToolStrip1.SuspendLayout()
         Me.grpNew.SuspendLayout()
         Me.grpRoles.SuspendLayout()
         Me.grpEdit.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         CType(Me.errP, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.grpMembers.SuspendLayout()
         Me.SuspendLayout()
         '
         'ToolStrip1
@@ -74,7 +77,7 @@ Partial Class frmRole
         Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripSeparator11, Me.tsbHome, Me.ToolStripSeparator9, Me.tsbMember, Me.ToolStripSeparator4, Me.tsbRole, Me.ToolStripSeparator3, Me.tsbEvent, Me.ToolStripSeparator5, Me.tsbRSVP, Me.ToolStripSeparator6, Me.tsbCourse, Me.ToolStripSeparator2, Me.tsbSemester, Me.ToolStripSeparator7, Me.tsbTutor, Me.tsbLogout, Me.ToolStripSeparator8, Me.tsbHelp, Me.ToolStripSeparator1})
         Me.ToolStrip1.Location = New System.Drawing.Point(0, 0)
         Me.ToolStrip1.Name = "ToolStrip1"
-        Me.ToolStrip1.Size = New System.Drawing.Size(915, 50)
+        Me.ToolStrip1.Size = New System.Drawing.Size(1156, 50)
         Me.ToolStrip1.TabIndex = 2
         Me.ToolStrip1.Text = "ToolStrip1"
         '
@@ -84,11 +87,33 @@ Partial Class frmRole
         Me.ToolStripSeparator11.Name = "ToolStripSeparator11"
         Me.ToolStripSeparator11.Size = New System.Drawing.Size(10, 50)
         '
+        'tsbHome
+        '
+        Me.tsbHome.AutoSize = False
+        Me.tsbHome.BackgroundImage = Global.StarsOrg.My.Resources.Resources.home
+        Me.tsbHome.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.tsbHome.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.tsbHome.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.tsbHome.Name = "tsbHome"
+        Me.tsbHome.Size = New System.Drawing.Size(48, 48)
+        Me.tsbHome.Text = "HOME"
+        '
         'ToolStripSeparator9
         '
         Me.ToolStripSeparator9.AutoSize = False
         Me.ToolStripSeparator9.Name = "ToolStripSeparator9"
         Me.ToolStripSeparator9.Size = New System.Drawing.Size(10, 50)
+        '
+        'tsbMember
+        '
+        Me.tsbMember.AutoSize = False
+        Me.tsbMember.BackgroundImage = Global.StarsOrg.My.Resources.Resources.member
+        Me.tsbMember.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.tsbMember.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.tsbMember.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.tsbMember.Name = "tsbMember"
+        Me.tsbMember.Size = New System.Drawing.Size(48, 48)
+        Me.tsbMember.Text = "MEMBER"
         '
         'ToolStripSeparator4
         '
@@ -96,11 +121,33 @@ Partial Class frmRole
         Me.ToolStripSeparator4.Name = "ToolStripSeparator4"
         Me.ToolStripSeparator4.Size = New System.Drawing.Size(10, 50)
         '
+        'tsbRole
+        '
+        Me.tsbRole.AutoSize = False
+        Me.tsbRole.BackgroundImage = Global.StarsOrg.My.Resources.Resources.roles
+        Me.tsbRole.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.tsbRole.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.tsbRole.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.tsbRole.Name = "tsbRole"
+        Me.tsbRole.Size = New System.Drawing.Size(48, 48)
+        Me.tsbRole.Text = "ROLE"
+        '
         'ToolStripSeparator3
         '
         Me.ToolStripSeparator3.AutoSize = False
         Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
         Me.ToolStripSeparator3.Size = New System.Drawing.Size(10, 50)
+        '
+        'tsbEvent
+        '
+        Me.tsbEvent.AutoSize = False
+        Me.tsbEvent.BackgroundImage = Global.StarsOrg.My.Resources.Resources.events
+        Me.tsbEvent.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.tsbEvent.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.tsbEvent.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.tsbEvent.Name = "tsbEvent"
+        Me.tsbEvent.Size = New System.Drawing.Size(48, 48)
+        Me.tsbEvent.Text = "EVENT"
         '
         'ToolStripSeparator5
         '
@@ -108,11 +155,33 @@ Partial Class frmRole
         Me.ToolStripSeparator5.Name = "ToolStripSeparator5"
         Me.ToolStripSeparator5.Size = New System.Drawing.Size(10, 50)
         '
+        'tsbRSVP
+        '
+        Me.tsbRSVP.AutoSize = False
+        Me.tsbRSVP.BackgroundImage = Global.StarsOrg.My.Resources.Resources.rsvp
+        Me.tsbRSVP.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.tsbRSVP.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.tsbRSVP.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.tsbRSVP.Name = "tsbRSVP"
+        Me.tsbRSVP.Size = New System.Drawing.Size(48, 48)
+        Me.tsbRSVP.Text = "RSVP"
+        '
         'ToolStripSeparator6
         '
         Me.ToolStripSeparator6.AutoSize = False
         Me.ToolStripSeparator6.Name = "ToolStripSeparator6"
         Me.ToolStripSeparator6.Size = New System.Drawing.Size(10, 50)
+        '
+        'tsbCourse
+        '
+        Me.tsbCourse.AutoSize = False
+        Me.tsbCourse.BackgroundImage = Global.StarsOrg.My.Resources.Resources.courses
+        Me.tsbCourse.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.tsbCourse.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.tsbCourse.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.tsbCourse.Name = "tsbCourse"
+        Me.tsbCourse.Size = New System.Drawing.Size(48, 48)
+        Me.tsbCourse.Text = "COURSE"
         '
         'ToolStripSeparator2
         '
@@ -120,11 +189,45 @@ Partial Class frmRole
         Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
         Me.ToolStripSeparator2.Size = New System.Drawing.Size(10, 50)
         '
+        'tsbSemester
+        '
+        Me.tsbSemester.AutoSize = False
+        Me.tsbSemester.BackgroundImage = Global.StarsOrg.My.Resources.Resources.semesters
+        Me.tsbSemester.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.tsbSemester.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.tsbSemester.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.tsbSemester.Name = "tsbSemester"
+        Me.tsbSemester.Size = New System.Drawing.Size(48, 48)
+        Me.tsbSemester.Text = "SEMESTER"
+        '
         'ToolStripSeparator7
         '
         Me.ToolStripSeparator7.AutoSize = False
         Me.ToolStripSeparator7.Name = "ToolStripSeparator7"
         Me.ToolStripSeparator7.Size = New System.Drawing.Size(10, 50)
+        '
+        'tsbTutor
+        '
+        Me.tsbTutor.AutoSize = False
+        Me.tsbTutor.BackgroundImage = Global.StarsOrg.My.Resources.Resources.tutors
+        Me.tsbTutor.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.tsbTutor.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.tsbTutor.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.tsbTutor.Name = "tsbTutor"
+        Me.tsbTutor.Size = New System.Drawing.Size(48, 48)
+        Me.tsbTutor.Text = "TUTOR"
+        '
+        'tsbLogout
+        '
+        Me.tsbLogout.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
+        Me.tsbLogout.AutoSize = False
+        Me.tsbLogout.BackgroundImage = Global.StarsOrg.My.Resources.Resources.logout
+        Me.tsbLogout.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.tsbLogout.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.tsbLogout.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.tsbLogout.Name = "tsbLogout"
+        Me.tsbLogout.Size = New System.Drawing.Size(48, 48)
+        Me.tsbLogout.Text = "LOGOUT"
         '
         'ToolStripSeparator8
         '
@@ -132,6 +235,18 @@ Partial Class frmRole
         Me.ToolStripSeparator8.AutoSize = False
         Me.ToolStripSeparator8.Name = "ToolStripSeparator8"
         Me.ToolStripSeparator8.Size = New System.Drawing.Size(10, 50)
+        '
+        'tsbHelp
+        '
+        Me.tsbHelp.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
+        Me.tsbHelp.AutoSize = False
+        Me.tsbHelp.BackgroundImage = Global.StarsOrg.My.Resources.Resources.help
+        Me.tsbHelp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.tsbHelp.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.tsbHelp.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.tsbHelp.Name = "tsbHelp"
+        Me.tsbHelp.Size = New System.Drawing.Size(48, 48)
+        Me.tsbHelp.Text = "HELP"
         '
         'ToolStripSeparator1
         '
@@ -199,16 +314,25 @@ Partial Class frmRole
         Me.grpEdit.Controls.Add(Me.txtRoleID)
         Me.grpEdit.Controls.Add(Me.Label3)
         Me.grpEdit.Controls.Add(Me.Label2)
-        Me.grpEdit.Location = New System.Drawing.Point(472, 193)
+        Me.grpEdit.Location = New System.Drawing.Point(370, 193)
         Me.grpEdit.Name = "grpEdit"
         Me.grpEdit.Size = New System.Drawing.Size(348, 225)
         Me.grpEdit.TabIndex = 6
         Me.grpEdit.TabStop = False
         Me.grpEdit.Text = "Edit Role"
         '
+        'btnReport
+        '
+        Me.btnReport.Location = New System.Drawing.Point(239, 163)
+        Me.btnReport.Name = "btnReport"
+        Me.btnReport.Size = New System.Drawing.Size(94, 25)
+        Me.btnReport.TabIndex = 6
+        Me.btnReport.Text = "Report"
+        Me.btnReport.UseVisualStyleBackColor = True
+        '
         'btnCancel
         '
-        Me.btnCancel.Location = New System.Drawing.Point(228, 169)
+        Me.btnCancel.Location = New System.Drawing.Point(129, 163)
         Me.btnCancel.Name = "btnCancel"
         Me.btnCancel.Size = New System.Drawing.Size(85, 25)
         Me.btnCancel.TabIndex = 5
@@ -217,7 +341,7 @@ Partial Class frmRole
         '
         'btnSave
         '
-        Me.btnSave.Location = New System.Drawing.Point(120, 169)
+        Me.btnSave.Location = New System.Drawing.Point(6, 163)
         Me.btnSave.Name = "btnSave"
         Me.btnSave.Size = New System.Drawing.Size(85, 25)
         Me.btnSave.TabIndex = 4
@@ -262,9 +386,9 @@ Partial Class frmRole
         'StatusStrip1
         '
         Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tslStatus})
-        Me.StatusStrip1.Location = New System.Drawing.Point(0, 479)
+        Me.StatusStrip1.Location = New System.Drawing.Point(0, 585)
         Me.StatusStrip1.Name = "StatusStrip1"
-        Me.StatusStrip1.Size = New System.Drawing.Size(915, 22)
+        Me.StatusStrip1.Size = New System.Drawing.Size(1156, 22)
         Me.StatusStrip1.TabIndex = 7
         Me.StatusStrip1.Text = "StatusStrip1"
         '
@@ -280,134 +404,32 @@ Partial Class frmRole
         '
         Me.errP.ContainerControl = Me
         '
-        'btnReport
+        'grpMembers
         '
-        Me.btnReport.Location = New System.Drawing.Point(6, 169)
-        Me.btnReport.Name = "btnReport"
-        Me.btnReport.Size = New System.Drawing.Size(94, 25)
-        Me.btnReport.TabIndex = 6
-        Me.btnReport.Text = "Report"
-        Me.btnReport.UseVisualStyleBackColor = True
+        Me.grpMembers.Controls.Add(Me.lstMembers)
+        Me.grpMembers.Location = New System.Drawing.Point(732, 132)
+        Me.grpMembers.Name = "grpMembers"
+        Me.grpMembers.Size = New System.Drawing.Size(409, 285)
+        Me.grpMembers.TabIndex = 8
+        Me.grpMembers.TabStop = False
+        Me.grpMembers.Text = "GroupBox1"
         '
-        'tsbHome
+        'lstMembers
         '
-        Me.tsbHome.AutoSize = False
-        Me.tsbHome.BackgroundImage = Global.StarsOrg.My.Resources.Resources.home
-        Me.tsbHome.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.tsbHome.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.tsbHome.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.tsbHome.Name = "tsbHome"
-        Me.tsbHome.Size = New System.Drawing.Size(48, 48)
-        Me.tsbHome.Text = "HOME"
-        '
-        'tsbMember
-        '
-        Me.tsbMember.AutoSize = False
-        Me.tsbMember.BackgroundImage = Global.StarsOrg.My.Resources.Resources.member
-        Me.tsbMember.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.tsbMember.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.tsbMember.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.tsbMember.Name = "tsbMember"
-        Me.tsbMember.Size = New System.Drawing.Size(48, 48)
-        Me.tsbMember.Text = "MEMBER"
-        '
-        'tsbRole
-        '
-        Me.tsbRole.AutoSize = False
-        Me.tsbRole.BackgroundImage = Global.StarsOrg.My.Resources.Resources.roles
-        Me.tsbRole.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.tsbRole.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.tsbRole.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.tsbRole.Name = "tsbRole"
-        Me.tsbRole.Size = New System.Drawing.Size(48, 48)
-        Me.tsbRole.Text = "ROLE"
-        '
-        'tsbEvent
-        '
-        Me.tsbEvent.AutoSize = False
-        Me.tsbEvent.BackgroundImage = Global.StarsOrg.My.Resources.Resources.events
-        Me.tsbEvent.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.tsbEvent.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.tsbEvent.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.tsbEvent.Name = "tsbEvent"
-        Me.tsbEvent.Size = New System.Drawing.Size(48, 48)
-        Me.tsbEvent.Text = "EVENT"
-        '
-        'tsbRSVP
-        '
-        Me.tsbRSVP.AutoSize = False
-        Me.tsbRSVP.BackgroundImage = Global.StarsOrg.My.Resources.Resources.rsvp
-        Me.tsbRSVP.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.tsbRSVP.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.tsbRSVP.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.tsbRSVP.Name = "tsbRSVP"
-        Me.tsbRSVP.Size = New System.Drawing.Size(48, 48)
-        Me.tsbRSVP.Text = "RSVP"
-        '
-        'tsbCourse
-        '
-        Me.tsbCourse.AutoSize = False
-        Me.tsbCourse.BackgroundImage = Global.StarsOrg.My.Resources.Resources.courses
-        Me.tsbCourse.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.tsbCourse.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.tsbCourse.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.tsbCourse.Name = "tsbCourse"
-        Me.tsbCourse.Size = New System.Drawing.Size(48, 48)
-        Me.tsbCourse.Text = "COURSE"
-        '
-        'tsbSemester
-        '
-        Me.tsbSemester.AutoSize = False
-        Me.tsbSemester.BackgroundImage = Global.StarsOrg.My.Resources.Resources.semesters
-        Me.tsbSemester.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.tsbSemester.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.tsbSemester.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.tsbSemester.Name = "tsbSemester"
-        Me.tsbSemester.Size = New System.Drawing.Size(48, 48)
-        Me.tsbSemester.Text = "SEMESTER"
-        '
-        'tsbTutor
-        '
-        Me.tsbTutor.AutoSize = False
-        Me.tsbTutor.BackgroundImage = Global.StarsOrg.My.Resources.Resources.tutors
-        Me.tsbTutor.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.tsbTutor.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.tsbTutor.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.tsbTutor.Name = "tsbTutor"
-        Me.tsbTutor.Size = New System.Drawing.Size(48, 48)
-        Me.tsbTutor.Text = "TUTOR"
-        '
-        'tsbLogout
-        '
-        Me.tsbLogout.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
-        Me.tsbLogout.AutoSize = False
-        Me.tsbLogout.BackgroundImage = Global.StarsOrg.My.Resources.Resources.logout
-        Me.tsbLogout.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.tsbLogout.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.tsbLogout.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.tsbLogout.Name = "tsbLogout"
-        Me.tsbLogout.Size = New System.Drawing.Size(48, 48)
-        Me.tsbLogout.Text = "LOGOUT"
-        '
-        'tsbHelp
-        '
-        Me.tsbHelp.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
-        Me.tsbHelp.AutoSize = False
-        Me.tsbHelp.BackgroundImage = Global.StarsOrg.My.Resources.Resources.help
-        Me.tsbHelp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.tsbHelp.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.tsbHelp.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.tsbHelp.Name = "tsbHelp"
-        Me.tsbHelp.Size = New System.Drawing.Size(48, 48)
-        Me.tsbHelp.Text = "HELP"
+        Me.lstMembers.FormattingEnabled = True
+        Me.lstMembers.Location = New System.Drawing.Point(31, 30)
+        Me.lstMembers.Name = "lstMembers"
+        Me.lstMembers.Size = New System.Drawing.Size(347, 199)
+        Me.lstMembers.TabIndex = 0
         '
         'frmRole
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.ClientSize = New System.Drawing.Size(915, 501)
+        Me.ClientSize = New System.Drawing.Size(1156, 607)
         Me.ControlBox = False
+        Me.Controls.Add(Me.grpMembers)
         Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.grpEdit)
         Me.Controls.Add(Me.grpRoles)
@@ -426,6 +448,7 @@ Partial Class frmRole
         Me.StatusStrip1.ResumeLayout(False)
         Me.StatusStrip1.PerformLayout()
         CType(Me.errP, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.grpMembers.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -468,4 +491,6 @@ Partial Class frmRole
     Friend WithEvents tslStatus As ToolStripStatusLabel
     Friend WithEvents errP As ErrorProvider
     Friend WithEvents btnReport As Button
+    Friend WithEvents grpMembers As GroupBox
+    Friend WithEvents lstMembers As ListBox
 End Class

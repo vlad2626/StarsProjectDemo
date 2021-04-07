@@ -66,4 +66,7 @@ Public Class CRole
         'if not a new role it, or it is new and has a unique id then do the save, update or insert
         Return myDB.execSP("sp_saveRole", getSaveParameters())
     End Function
+    Public Function getReportData() As SqlDataAdapter
+        Return myDB.getDataAdapterBySp("dbo.sp_getAllRoles", Nothing)
+    End Function
 End Class

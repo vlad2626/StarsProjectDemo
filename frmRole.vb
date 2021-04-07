@@ -2,6 +2,7 @@
 Public Class frmRole
 
     Private objroles As CRoles
+    Private objMember As Member
     Private blnClearing As Boolean
     Private blnReloading As Boolean
 
@@ -115,14 +116,32 @@ Public Class frmRole
 
     End Sub
 
+    Private Sub showMembers()
+        Dim objDR As SqlDataReader
+        lstMembers.Items.Clear()
+        Try
+            objDR = objMember.getAllMembers()
+            Do While objDR.Read
+                lstMembers.Items.Add(objDR.Item("LName"))
+            Loop
+            objDR.Close()
+        Catch ex As Exception
+            MessageBox.Show("showing members" & ex.ToString, "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
     Private Sub frmRole_Load(sender As Object, e As EventArgs) Handles Me.Load
         objroles = New CRoles
+        objMember = New Member(Nothing)
+
     End Sub
 
     Private Sub frmRole_Shown(sender As Object, e As EventArgs) Handles Me.Shown
         clearScreenCOntrols(Me)
         loadRoles()
+        showMembers()
         grpEdit.Enabled = False
+
     End Sub
 
     Private Sub lstRoles_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lstRoles.SelectedIndexChanged
