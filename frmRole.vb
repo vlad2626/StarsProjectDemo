@@ -3,6 +3,7 @@ Public Class frmRole
 
     Private objroles As CRoles
     Private objMember As Member
+    Private objAdd As AddUser
     Private blnClearing As Boolean
     Private blnReloading As Boolean
 
@@ -133,6 +134,7 @@ Public Class frmRole
     Private Sub frmRole_Load(sender As Object, e As EventArgs) Handles Me.Load
         objroles = New CRoles
         objMember = New Member(Nothing)
+        objAdd = New AddUser()
 
     End Sub
 
@@ -269,5 +271,7 @@ Public Class frmRole
 
     End Sub
 
-
+    Private Sub btnAdd_Click(sender As Object, e As EventArgs) Handles btnAdd.Click
+        objAdd.Visible = True
+    End Sub
 End Class
