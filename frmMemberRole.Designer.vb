@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class frmMain
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
+Partial Class frmMemberRole
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,9 +20,15 @@ Partial Class frmMain
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMain))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMemberRole))
+        Me.grpMembers = New System.Windows.Forms.GroupBox()
+        Me.lstMem = New System.Windows.Forms.ListBox()
+        Me.grpSemester = New System.Windows.Forms.GroupBox()
+        Me.cboSemester = New System.Windows.Forms.ComboBox()
+        Me.grpRole = New System.Windows.Forms.GroupBox()
+        Me.lstRole = New System.Windows.Forms.CheckedListBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
         Me.ToolStripSeparator11 = New System.Windows.Forms.ToolStripSeparator()
@@ -45,29 +51,93 @@ Partial Class frmMain
         Me.ToolStripSeparator8 = New System.Windows.Forms.ToolStripSeparator()
         Me.tsbHelp = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
-        Me.tsbMemRole = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
+        Me.cbADD = New System.Windows.Forms.CheckBox()
+        Me.btnAdd = New System.Windows.Forms.Button()
+        Me.grpPID = New System.Windows.Forms.GroupBox()
+        Me.cbPID = New System.Windows.Forms.ComboBox()
+        Me.grpMembers.SuspendLayout()
+        Me.grpSemester.SuspendLayout()
+        Me.grpRole.SuspendLayout()
         Me.ToolStrip1.SuspendLayout()
+        Me.grpPID.SuspendLayout()
         Me.SuspendLayout()
+        '
+        'grpMembers
+        '
+        Me.grpMembers.Controls.Add(Me.lstMem)
+        Me.grpMembers.Location = New System.Drawing.Point(12, 147)
+        Me.grpMembers.Name = "grpMembers"
+        Me.grpMembers.Size = New System.Drawing.Size(401, 377)
+        Me.grpMembers.TabIndex = 0
+        Me.grpMembers.TabStop = False
+        Me.grpMembers.Text = "Members"
+        '
+        'lstMem
+        '
+        Me.lstMem.FormattingEnabled = True
+        Me.lstMem.Location = New System.Drawing.Point(21, 36)
+        Me.lstMem.Name = "lstMem"
+        Me.lstMem.Size = New System.Drawing.Size(362, 290)
+        Me.lstMem.TabIndex = 0
+        '
+        'grpSemester
+        '
+        Me.grpSemester.Controls.Add(Me.cboSemester)
+        Me.grpSemester.Location = New System.Drawing.Point(711, 137)
+        Me.grpSemester.Name = "grpSemester"
+        Me.grpSemester.Size = New System.Drawing.Size(340, 198)
+        Me.grpSemester.TabIndex = 1
+        Me.grpSemester.TabStop = False
+        Me.grpSemester.Text = "Semester"
+        '
+        'cboSemester
+        '
+        Me.cboSemester.FormattingEnabled = True
+        Me.cboSemester.Location = New System.Drawing.Point(24, 32)
+        Me.cboSemester.Name = "cboSemester"
+        Me.cboSemester.Size = New System.Drawing.Size(288, 21)
+        Me.cboSemester.TabIndex = 0
+        '
+        'grpRole
+        '
+        Me.grpRole.Controls.Add(Me.lstRole)
+        Me.grpRole.Location = New System.Drawing.Point(711, 350)
+        Me.grpRole.Name = "grpRole"
+        Me.grpRole.Size = New System.Drawing.Size(334, 164)
+        Me.grpRole.TabIndex = 2
+        Me.grpRole.TabStop = False
+        Me.grpRole.Text = "Role"
+        '
+        'lstRole
+        '
+        Me.lstRole.FormattingEnabled = True
+        Me.lstRole.Location = New System.Drawing.Point(24, 27)
+        Me.lstRole.Name = "lstRole"
+        Me.lstRole.Size = New System.Drawing.Size(289, 124)
+        Me.lstRole.TabIndex = 0
         '
         'Label1
         '
-        Me.Label1.AutoSize = True
+        Me.Label1.BackColor = System.Drawing.SystemColors.ControlDark
         Me.Label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(271, 439)
+        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.Label1.Location = New System.Drawing.Point(261, 50)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(375, 33)
-        Me.Label1.TabIndex = 0
-        Me.Label1.Text = "FIU STARS ORGANIZATION"
+        Me.Label1.Size = New System.Drawing.Size(606, 58)
+        Me.Label1.TabIndex = 3
+        Me.Label1.Text = "MemberRoles"
+        Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'ToolStrip1
         '
         Me.ToolStrip1.AutoSize = False
-        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripSeparator11, Me.tsbHome, Me.ToolStripSeparator9, Me.tsbMember, Me.ToolStripSeparator4, Me.tsbRole, Me.ToolStripSeparator3, Me.tsbEvent, Me.ToolStripSeparator5, Me.tsbRSVP, Me.ToolStripSeparator6, Me.tsbCourse, Me.ToolStripSeparator2, Me.tsbSemester, Me.ToolStripSeparator7, Me.tsbTutor, Me.tsbLogout, Me.ToolStripSeparator8, Me.tsbHelp, Me.ToolStripSeparator1, Me.tsbMemRole})
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripSeparator11, Me.tsbHome, Me.ToolStripSeparator9, Me.tsbMember, Me.ToolStripSeparator4, Me.tsbRole, Me.ToolStripSeparator3, Me.tsbEvent, Me.ToolStripSeparator5, Me.tsbRSVP, Me.ToolStripSeparator6, Me.tsbCourse, Me.ToolStripSeparator2, Me.tsbSemester, Me.ToolStripSeparator7, Me.tsbTutor, Me.tsbLogout, Me.ToolStripSeparator8, Me.tsbHelp, Me.ToolStripSeparator1, Me.ToolStripButton1})
         Me.ToolStrip1.Location = New System.Drawing.Point(0, 0)
         Me.ToolStrip1.Name = "ToolStrip1"
-        Me.ToolStrip1.Size = New System.Drawing.Size(908, 50)
-        Me.ToolStrip1.TabIndex = 1
+        Me.ToolStrip1.Size = New System.Drawing.Size(1088, 50)
+        Me.ToolStrip1.TabIndex = 4
         Me.ToolStrip1.Text = "ToolStrip1"
         '
         'ToolStripSeparator11
@@ -244,57 +314,110 @@ Partial Class frmMain
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
         Me.ToolStripSeparator1.Size = New System.Drawing.Size(10, 50)
         '
-        'tsbMemRole
+        'ToolStripButton1
         '
-        Me.tsbMemRole.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.tsbMemRole.Image = CType(resources.GetObject("tsbMemRole.Image"), System.Drawing.Image)
-        Me.tsbMemRole.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.tsbMemRole.Name = "tsbMemRole"
-        Me.tsbMemRole.Size = New System.Drawing.Size(23, 47)
-        Me.tsbMemRole.Text = "Member ROles"
+        Me.ToolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolStripButton1.Image = CType(resources.GetObject("ToolStripButton1.Image"), System.Drawing.Image)
+        Me.ToolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripButton1.Name = "ToolStripButton1"
+        Me.ToolStripButton1.Size = New System.Drawing.Size(23, 47)
+        Me.ToolStripButton1.Text = "ToolStripButton1"
         '
-        'frmMain
+        'cbADD
+        '
+        Me.cbADD.AutoSize = True
+        Me.cbADD.Location = New System.Drawing.Point(48, 530)
+        Me.cbADD.Name = "cbADD"
+        Me.cbADD.Size = New System.Drawing.Size(110, 17)
+        Me.cbADD.TabIndex = 5
+        Me.cbADD.Text = "ADD NEW ROLE"
+        Me.cbADD.UseVisualStyleBackColor = True
+        '
+        'btnAdd
+        '
+        Me.btnAdd.Location = New System.Drawing.Point(568, 522)
+        Me.btnAdd.Name = "btnAdd"
+        Me.btnAdd.Size = New System.Drawing.Size(119, 31)
+        Me.btnAdd.TabIndex = 6
+        Me.btnAdd.Text = "ADD"
+        Me.btnAdd.UseVisualStyleBackColor = True
+        '
+        'grpPID
+        '
+        Me.grpPID.Controls.Add(Me.cbPID)
+        Me.grpPID.Enabled = False
+        Me.grpPID.Location = New System.Drawing.Point(431, 160)
+        Me.grpPID.Name = "grpPID"
+        Me.grpPID.Size = New System.Drawing.Size(256, 154)
+        Me.grpPID.TabIndex = 8
+        Me.grpPID.TabStop = False
+        Me.grpPID.Text = "PID"
+        '
+        'cbPID
+        '
+        Me.cbPID.FormattingEnabled = True
+        Me.cbPID.Location = New System.Drawing.Point(21, 29)
+        Me.cbPID.Name = "cbPID"
+        Me.cbPID.Size = New System.Drawing.Size(226, 21)
+        Me.cbPID.TabIndex = 0
+        '
+        'frmMemberRole
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.BackgroundImage = Global.StarsOrg.My.Resources.Resources.STARS_National_LOGO
-        Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
-        Me.ClientSize = New System.Drawing.Size(908, 508)
-        Me.ControlBox = False
+        Me.ClientSize = New System.Drawing.Size(1088, 712)
+        Me.Controls.Add(Me.grpPID)
+        Me.Controls.Add(Me.btnAdd)
+        Me.Controls.Add(Me.cbADD)
         Me.Controls.Add(Me.ToolStrip1)
         Me.Controls.Add(Me.Label1)
-        Me.DoubleBuffered = True
-        Me.Name = "frmMain"
-        Me.Text = "FIU Stars"
+        Me.Controls.Add(Me.grpRole)
+        Me.Controls.Add(Me.grpSemester)
+        Me.Controls.Add(Me.grpMembers)
+        Me.Name = "frmMemberRole"
+        Me.Text = "frmMemberRole"
+        Me.grpMembers.ResumeLayout(False)
+        Me.grpSemester.ResumeLayout(False)
+        Me.grpRole.ResumeLayout(False)
         Me.ToolStrip1.ResumeLayout(False)
         Me.ToolStrip1.PerformLayout()
+        Me.grpPID.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
 
+    Friend WithEvents grpMembers As GroupBox
+    Friend WithEvents grpSemester As GroupBox
+    Friend WithEvents grpRole As GroupBox
     Friend WithEvents Label1 As Label
+    Friend WithEvents lstMem As ListBox
+    Friend WithEvents lstRole As CheckedListBox
     Friend WithEvents ToolStrip1 As ToolStrip
+    Friend WithEvents ToolStripSeparator11 As ToolStripSeparator
     Friend WithEvents tsbHome As ToolStripButton
+    Friend WithEvents ToolStripSeparator9 As ToolStripSeparator
     Friend WithEvents tsbMember As ToolStripButton
+    Friend WithEvents ToolStripSeparator4 As ToolStripSeparator
     Friend WithEvents tsbRole As ToolStripButton
+    Friend WithEvents ToolStripSeparator3 As ToolStripSeparator
     Friend WithEvents tsbEvent As ToolStripButton
+    Friend WithEvents ToolStripSeparator5 As ToolStripSeparator
     Friend WithEvents tsbRSVP As ToolStripButton
+    Friend WithEvents ToolStripSeparator6 As ToolStripSeparator
     Friend WithEvents tsbCourse As ToolStripButton
+    Friend WithEvents ToolStripSeparator2 As ToolStripSeparator
     Friend WithEvents tsbSemester As ToolStripButton
-    Friend WithEvents tsbHelp As ToolStripButton
+    Friend WithEvents ToolStripSeparator7 As ToolStripSeparator
     Friend WithEvents tsbTutor As ToolStripButton
     Friend WithEvents tsbLogout As ToolStripButton
-    Friend WithEvents ToolStripSeparator11 As ToolStripSeparator
-    Friend WithEvents ToolStripSeparator9 As ToolStripSeparator
-    Friend WithEvents ToolStripSeparator4 As ToolStripSeparator
-    Friend WithEvents ToolStripSeparator3 As ToolStripSeparator
-    Friend WithEvents ToolStripSeparator5 As ToolStripSeparator
-    Friend WithEvents ToolStripSeparator6 As ToolStripSeparator
-    Friend WithEvents ToolStripSeparator2 As ToolStripSeparator
-    Friend WithEvents ToolStripSeparator7 As ToolStripSeparator
     Friend WithEvents ToolStripSeparator8 As ToolStripSeparator
+    Friend WithEvents tsbHelp As ToolStripButton
     Friend WithEvents ToolStripSeparator1 As ToolStripSeparator
-    Friend WithEvents tsbMemRole As ToolStripButton
+    Friend WithEvents ToolStripButton1 As ToolStripButton
+    Friend WithEvents cbADD As CheckBox
+    Friend WithEvents btnAdd As Button
+    Friend WithEvents cboSemester As ComboBox
+    Friend WithEvents grpPID As GroupBox
+    Friend WithEvents cbPID As ComboBox
 End Class

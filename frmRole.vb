@@ -1,9 +1,9 @@
 ﻿Imports System.Data.SqlClient
 Public Class frmRole
 
-    Private objroles As CRoles
+    Public objroles As CRoles
     Private objMember As Member
-    Private objAdd As AddUser
+    Private objAdd As frmMember
     Private blnClearing As Boolean
     Private blnReloading As Boolean
 
@@ -134,7 +134,7 @@ Public Class frmRole
     Private Sub frmRole_Load(sender As Object, e As EventArgs) Handles Me.Load
         objroles = New CRoles
         objMember = New Member(Nothing)
-        objAdd = New AddUser()
+        objAdd = New frmMember
 
     End Sub
 
@@ -167,10 +167,10 @@ Public Class frmRole
 
     Private Sub loadSelectedRecord()
         Try
-            objroles.getRoleByRoleID(lstRoles.SelectedItem.ToString)
+            objroles.getRoleByRoleID(lstRoles.SelectedItem - 1.ToString)
             With objroles.CurrentObject
-                txtRoleID.Text = .RoleID
-                txtDesc.Text = .RoleDescription
+                lstRoles.Items.Add(.RoleID)
+
             End With
         Catch ex As Exception
             MessageBox.Show("Error displaying data" & ex.ToString, " Error loading", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -198,6 +198,7 @@ Public Class frmRole
         Else
             grpRoles.Enabled = True
             grpEdit.Enabled = False
+            grpMembers.Enabled = False
             objroles.CurrentObject.isNewRole = False
 
         End If
@@ -272,6 +273,6 @@ Public Class frmRole
     End Sub
 
     Private Sub btnAdd_Click(sender As Object, e As EventArgs) Handles btnAdd.Click
-        objAdd.Visible = True
+        objAdd.ShowDialog()
     End Sub
 End Class

@@ -23,6 +23,7 @@ Partial Class frmRole
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmRole))
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
         Me.ToolStripSeparator11 = New System.Windows.Forms.ToolStripSeparator()
         Me.tsbHome = New System.Windows.Forms.ToolStripButton()
@@ -61,9 +62,10 @@ Partial Class frmRole
         Me.tslStatus = New System.Windows.Forms.ToolStripStatusLabel()
         Me.errP = New System.Windows.Forms.ErrorProvider(Me.components)
         Me.grpMembers = New System.Windows.Forms.GroupBox()
-        Me.lstMembers = New System.Windows.Forms.ListBox()
-        Me.btnAdd = New System.Windows.Forms.Button()
         Me.btnRemove = New System.Windows.Forms.Button()
+        Me.btnAdd = New System.Windows.Forms.Button()
+        Me.lstMembers = New System.Windows.Forms.ListBox()
+        Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
         Me.ToolStrip1.SuspendLayout()
         Me.grpNew.SuspendLayout()
         Me.grpRoles.SuspendLayout()
@@ -76,7 +78,7 @@ Partial Class frmRole
         'ToolStrip1
         '
         Me.ToolStrip1.AutoSize = False
-        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripSeparator11, Me.tsbHome, Me.ToolStripSeparator9, Me.tsbMember, Me.ToolStripSeparator4, Me.tsbRole, Me.ToolStripSeparator3, Me.tsbEvent, Me.ToolStripSeparator5, Me.tsbRSVP, Me.ToolStripSeparator6, Me.tsbCourse, Me.ToolStripSeparator2, Me.tsbSemester, Me.ToolStripSeparator7, Me.tsbTutor, Me.tsbLogout, Me.ToolStripSeparator8, Me.tsbHelp, Me.ToolStripSeparator1})
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripSeparator11, Me.tsbHome, Me.ToolStripSeparator9, Me.tsbMember, Me.ToolStripSeparator4, Me.tsbRole, Me.ToolStripSeparator3, Me.tsbEvent, Me.ToolStripSeparator5, Me.tsbRSVP, Me.ToolStripSeparator6, Me.tsbCourse, Me.ToolStripSeparator2, Me.tsbSemester, Me.ToolStripSeparator7, Me.tsbTutor, Me.tsbLogout, Me.ToolStripSeparator8, Me.tsbHelp, Me.ToolStripSeparator1, Me.ToolStripButton1})
         Me.ToolStrip1.Location = New System.Drawing.Point(0, 0)
         Me.ToolStrip1.Name = "ToolStrip1"
         Me.ToolStrip1.Size = New System.Drawing.Size(1156, 50)
@@ -416,15 +418,16 @@ Partial Class frmRole
         Me.grpMembers.Size = New System.Drawing.Size(409, 285)
         Me.grpMembers.TabIndex = 8
         Me.grpMembers.TabStop = False
-        Me.grpMembers.Text = "GroupBox1"
+        Me.grpMembers.Text = "Members"
         '
-        'lstMembers
+        'btnRemove
         '
-        Me.lstMembers.FormattingEnabled = True
-        Me.lstMembers.Location = New System.Drawing.Point(31, 30)
-        Me.lstMembers.Name = "lstMembers"
-        Me.lstMembers.Size = New System.Drawing.Size(347, 199)
-        Me.lstMembers.TabIndex = 0
+        Me.btnRemove.Location = New System.Drawing.Point(212, 245)
+        Me.btnRemove.Name = "btnRemove"
+        Me.btnRemove.Size = New System.Drawing.Size(165, 33)
+        Me.btnRemove.TabIndex = 2
+        Me.btnRemove.Text = "Remove"
+        Me.btnRemove.UseVisualStyleBackColor = True
         '
         'btnAdd
         '
@@ -435,14 +438,22 @@ Partial Class frmRole
         Me.btnAdd.Text = "Add"
         Me.btnAdd.UseVisualStyleBackColor = True
         '
-        'btnRemove
+        'lstMembers
         '
-        Me.btnRemove.Location = New System.Drawing.Point(212, 245)
-        Me.btnRemove.Name = "btnRemove"
-        Me.btnRemove.Size = New System.Drawing.Size(165, 33)
-        Me.btnRemove.TabIndex = 2
-        Me.btnRemove.Text = "Remove"
-        Me.btnRemove.UseVisualStyleBackColor = True
+        Me.lstMembers.FormattingEnabled = True
+        Me.lstMembers.Location = New System.Drawing.Point(31, 30)
+        Me.lstMembers.Name = "lstMembers"
+        Me.lstMembers.Size = New System.Drawing.Size(347, 199)
+        Me.lstMembers.TabIndex = 0
+        '
+        'ToolStripButton1
+        '
+        Me.ToolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolStripButton1.Image = CType(resources.GetObject("ToolStripButton1.Image"), System.Drawing.Image)
+        Me.ToolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripButton1.Name = "ToolStripButton1"
+        Me.ToolStripButton1.Size = New System.Drawing.Size(23, 47)
+        Me.ToolStripButton1.Text = "ToolStripButton1"
         '
         'frmRole
         '
@@ -517,4 +528,5 @@ Partial Class frmRole
     Friend WithEvents lstMembers As ListBox
     Friend WithEvents btnRemove As Button
     Friend WithEvents btnAdd As Button
+    Friend WithEvents ToolStripButton1 As ToolStripButton
 End Class

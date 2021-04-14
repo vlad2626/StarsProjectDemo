@@ -95,20 +95,29 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddUser.Designer.vb">
-      <DependentUpon>AddUser.vb</DependentUpon>
-    </Compile>
-    <Compile Include="AddUser.vb">
-      <SubType>UserControl</SubType>
-    </Compile>
     <Compile Include="CDB.vb" />
+    <Compile Include="CMember.vb" />
+    <Compile Include="CMemberRole.vb" />
     <Compile Include="CRole.vb" />
     <Compile Include="CRoles.vb" />
+    <Compile Include="CSemester.vb" />
     <Compile Include="frmMain.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmMain.Designer.vb">
       <DependentUpon>frmMain.vb</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMember.Designer.vb">
+      <DependentUpon>frmMember.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmMember.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMemberRole.Designer.vb">
+      <DependentUpon>frmMemberRole.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmMemberRole.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmRole.Designer.vb">
@@ -139,11 +148,14 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="AddUser.resx">
-      <DependentUpon>AddUser.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMember.resx">
+      <DependentUpon>frmMember.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMemberRole.resx">
+      <DependentUpon>frmMemberRole.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmRole.resx">
       <DependentUpon>frmRole.vb</DependentUpon>
