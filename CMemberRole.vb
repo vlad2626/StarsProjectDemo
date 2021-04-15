@@ -47,6 +47,7 @@ Public Class CMemberRole
         Dim params As New ArrayList
 
         params.Add(New SqlParameter("LName", strVal))
+        'params.Add(New SqlParameter("SemesterID", strSem))
 
         objDr = myDB.getDataReaderBySP("sp_loadAll2", params)
         Return objDr

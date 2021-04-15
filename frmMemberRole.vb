@@ -161,6 +161,7 @@ Public Class frmMemberRole
         lstRole.Items.Clear()
         Dim objDR As SqlDataReader
 
+        'objDR = objMemberRole.getAll(lstMem.SelectedItem.ToString, cboSemester.SelectedItem.ToString)
         objDR = objMemberRole.getAll(lstMem.SelectedItem.ToString)
         Try
 
