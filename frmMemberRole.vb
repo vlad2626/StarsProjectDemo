@@ -7,6 +7,9 @@ Public Class frmMemberRole
     Public objroles As CRoles
     Private objSemester As CSemester
     Private objMemberRole As CMemberRole
+    Private arrUserRoles As ArrayList
+    Private arrAllRoles As ArrayList
+
 
     Private objAdd As frmMember
     Private blnClearing As Boolean
@@ -58,9 +61,11 @@ Public Class frmMemberRole
         objSemester = New CSemester(Nothing)
         objMemberRole = New CMemberRole
         objCMember = New CMember
+        arrUserRoles = New ArrayList
+        arrAllRoles = New ArrayList
 
         showMembers()
-        'loadRoles()
+        loadRoles()
         loadSemester()
 
         grpRole.Enabled = False
@@ -125,7 +130,8 @@ Public Class frmMemberRole
         Try
             objDR = objroles.getAllRoles()
             Do While objDR.Read
-                lstRole.Items.Add(objDR.Item("RoleID"))
+                arrAllRoles.Add(objDR.Item("RoleID"))
+
             Loop
 
             objDR.Close()
@@ -144,8 +150,40 @@ Public Class frmMemberRole
     Private Sub cbADD_Click(sender As Object, e As EventArgs) Handles cbADD.Click
         grpSemester.Enabled = True
         grpRole.Enabled = True
+        compareRoles()
 
     End Sub
+
+    Private Sub compareRoles()
+        lstRole.Items.Clear()
+        'adds all the users
+        Dim arrCont = New ArrayList
+
+        For i = 0 To arrAllRoles.Count - 1
+            lstRole.Items.Add(arrAllRoles.Item(i))
+        Next
+
+        For i = 0 To lstRole.Items.Count - 1
+            If arrUserRoles.Contains(lstRole.Items(i)) Then
+                lstRole.SetItemChecked(i, True)
+            End If
+
+
+        Next
+
+
+
+        'For i = 0 To arrUserRoles.Count - 1
+        '    'gets rid of loading duplicate roles
+        '    If lstRole.Items.Count < 9 Then
+        '        If arrAllRoles.Item(i) <> arrUserRoles.Item(i) Then
+        '            lstRole.Items.Add(arrAllRoles.Item(i))
+        '        End If
+        '    End If
+        'Next
+    End Sub
+
+
 
     Private Sub lstMem_Click(sender As Object, e As EventArgs) Handles lstMem.SelectedIndexChanged
 
@@ -159,7 +197,9 @@ Public Class frmMemberRole
 
     Private Sub loadSelectedRecord()
         lstRole.Items.Clear()
+        cbADD.Checked = False
         Dim objDR As SqlDataReader
+        Dim count = -1 ' counter for current index of the roles
 
         'objDR = objMemberRole.getAll(lstMem.SelectedItem.ToString, cboSemester.SelectedItem.ToString)
         objDR = objMemberRole.getAll(lstMem.SelectedItem.ToString)
@@ -167,6 +207,10 @@ Public Class frmMemberRole
 
             While objDR.Read
                 lstRole.Items.Add(objDR.Item("RoleID"))
+                arrUserRoles.Add(objDR.Item("RoleID"))
+                count = count + 1
+                lstRole.SetItemChecked(count, True)
+
             End While
             objDR.Close()
         Catch ex As Exception
