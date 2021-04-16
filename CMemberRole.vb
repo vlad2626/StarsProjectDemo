@@ -42,14 +42,14 @@ Public Class CMemberRole
 
 
 
-    Public Function getAll(strVal As String) As SqlDataReader
+    Public Function getAll(strVal As String, strSem As String) As SqlDataReader
         Dim objDr As SqlDataReader
         Dim params As New ArrayList
 
         params.Add(New SqlParameter("LName", strVal))
-        'params.Add(New SqlParameter("SemesterID", strSem))
+        params.Add(New SqlParameter("SemesterID", strSem))
 
-        objDr = myDB.getDataReaderBySP("sp_loadAll2", params)
+        objDr = myDB.getDataReaderBySP("sp_loadAll23", params)
         Return objDr
     End Function
 
@@ -57,10 +57,10 @@ Public Class CMemberRole
 
         If objDR.Read Then
             With _MemberRole
-                ' .PID = objDR.Item("PID")
+                .PID = objDR.Item("PID")
                 .RoleID = objDR.Item("RoleID")
 
-                ' .SemesterID = objDR.Item("SemesterID")
+                .SemesterID = objDR.Item("SemesterID")
 
 
             End With
@@ -136,10 +136,25 @@ Public Class CMemberRole
 
 
 
-    Public Function SaveRoles() As SqlDataReader
-        Dim objDr As SqlDataReader
-        objDr = myDB.getDataReaderBySP("sp_SaveMemberRole", getSaveParameters())
+    Public Function SaveRoles(strPID As String, strRoleID As String, strSemester As String)
+        Dim objDr As SqlDataAdapter
+        Dim params As New ArrayList
+        params.Add(New SqlParameter("PID", strPID))
+        params.Add(New SqlParameter("RoleID", strRoleID))
+        params.Add(New SqlParameter("SemesterID", strSemester))
+        'objDr = myDB.getDataAdapterBySp("sp_SaveMemberRole", params)
+        myDB.execSP("sp_SaveMemberRole", params)
         Return objDr
+    End Function
+
+    Public Function removeRole(strPID As String, strRoleID As String, strSemester As String)
+        Dim objDr As SqlDataAdapter
+        Dim params As New ArrayList
+        params.Add(New SqlParameter("PID", strPID))
+        params.Add(New SqlParameter("RoleID", strRoleID))
+        params.Add(New SqlParameter("SemesterID", strSemester))
+
+
     End Function
 
     Public ReadOnly Property CurrentObject() As CMemberRole

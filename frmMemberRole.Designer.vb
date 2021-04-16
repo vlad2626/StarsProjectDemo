@@ -53,9 +53,11 @@ Partial Class frmMemberRole
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
         Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
         Me.cbADD = New System.Windows.Forms.CheckBox()
-        Me.btnAdd = New System.Windows.Forms.Button()
+        Me.btnAdding = New System.Windows.Forms.Button()
         Me.grpPID = New System.Windows.Forms.GroupBox()
         Me.cbPID = New System.Windows.Forms.ComboBox()
+        Me.cbTest = New System.Windows.Forms.ComboBox()
+        Me.btnFinish = New System.Windows.Forms.Button()
         Me.grpMembers.SuspendLayout()
         Me.grpSemester.SuspendLayout()
         Me.grpRole.SuspendLayout()
@@ -111,6 +113,7 @@ Partial Class frmMemberRole
         '
         'lstRole
         '
+        Me.lstRole.CheckOnClick = True
         Me.lstRole.FormattingEnabled = True
         Me.lstRole.Location = New System.Drawing.Point(24, 27)
         Me.lstRole.Name = "lstRole"
@@ -333,14 +336,14 @@ Partial Class frmMemberRole
         Me.cbADD.Text = "ADD NEW ROLE"
         Me.cbADD.UseVisualStyleBackColor = True
         '
-        'btnAdd
+        'btnAdding
         '
-        Me.btnAdd.Location = New System.Drawing.Point(568, 522)
-        Me.btnAdd.Name = "btnAdd"
-        Me.btnAdd.Size = New System.Drawing.Size(119, 31)
-        Me.btnAdd.TabIndex = 6
-        Me.btnAdd.Text = "ADD"
-        Me.btnAdd.UseVisualStyleBackColor = True
+        Me.btnAdding.Location = New System.Drawing.Point(568, 522)
+        Me.btnAdding.Name = "btnAdding"
+        Me.btnAdding.Size = New System.Drawing.Size(119, 31)
+        Me.btnAdding.TabIndex = 6
+        Me.btnAdding.Text = "ADD"
+        Me.btnAdding.UseVisualStyleBackColor = True
         '
         'grpPID
         '
@@ -361,13 +364,32 @@ Partial Class frmMemberRole
         Me.cbPID.Size = New System.Drawing.Size(226, 21)
         Me.cbPID.TabIndex = 0
         '
+        'cbTest
+        '
+        Me.cbTest.FormattingEnabled = True
+        Me.cbTest.Location = New System.Drawing.Point(442, 354)
+        Me.cbTest.Name = "cbTest"
+        Me.cbTest.Size = New System.Drawing.Size(244, 21)
+        Me.cbTest.TabIndex = 9
+        '
+        'btnFinish
+        '
+        Me.btnFinish.Location = New System.Drawing.Point(724, 531)
+        Me.btnFinish.Name = "btnFinish"
+        Me.btnFinish.Size = New System.Drawing.Size(88, 21)
+        Me.btnFinish.TabIndex = 10
+        Me.btnFinish.Text = "Submit"
+        Me.btnFinish.UseVisualStyleBackColor = True
+        '
         'frmMemberRole
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1088, 712)
+        Me.Controls.Add(Me.btnFinish)
+        Me.Controls.Add(Me.cbTest)
         Me.Controls.Add(Me.grpPID)
-        Me.Controls.Add(Me.btnAdd)
+        Me.Controls.Add(Me.btnAdding)
         Me.Controls.Add(Me.cbADD)
         Me.Controls.Add(Me.ToolStrip1)
         Me.Controls.Add(Me.Label1)
@@ -416,8 +438,10 @@ Partial Class frmMemberRole
     Friend WithEvents ToolStripSeparator1 As ToolStripSeparator
     Friend WithEvents ToolStripButton1 As ToolStripButton
     Friend WithEvents cbADD As CheckBox
-    Friend WithEvents btnAdd As Button
+    Friend WithEvents btnAdding As Button
     Friend WithEvents cboSemester As ComboBox
     Friend WithEvents grpPID As GroupBox
     Friend WithEvents cbPID As ComboBox
+    Friend WithEvents cbTest As ComboBox
+    Friend WithEvents btnFinish As Button
 End Class
