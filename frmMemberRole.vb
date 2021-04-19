@@ -150,18 +150,29 @@ Public Class frmMemberRole
 
 
 
-    Private Sub cbADD_Click(sender As Object, e As EventArgs) Handles cbADD.Click
-        grpSemester.Enabled = True
-        grpRole.Enabled = True
-        Dim index = -1
-        
-        compareRoles()
+    Private Sub cbADD_Click(sender As Object, e As EventArgs) Handles cbADD.Click, cbADD.CheckStateChanged
+
+        If cbADD.Checked = True Then
+            grpSemester.Enabled = True
+            grpRole.Enabled = True
+            lstRole.Enabled = True
+            Dim index = -1
+
+            compareRoles()
+        Else
+            grpSemester.Enabled = True
+            grpRole.Enabled = True
+            lstRole.Enabled = False
+            lstRole.ScrollAlwaysVisible = True
+        End If
+
+
 
     End Sub
 
     Private Sub compareRoles()
         lstRole.Items.Clear()
-        'adds all the users
+        'adds all the users roles
         Dim arrCont = New ArrayList
 
         For i = 0 To arrAllRoles.Count - 1
@@ -169,13 +180,13 @@ Public Class frmMemberRole
         Next
 
 
-        For i = 0 To lstRole.Items.Count - 1
-            If arrUserRoles.Contains(lstRole.Items(i)) Then
-                lstRole.SetItemChecked(i, True)
-            End If
+        'For i = 0 To lstRole.Items.Count - 1
+        '    If arrUserRoles.Contains(lstRole.Items(i)) Then
+        '        lstRole.SetItemChecked(i, True)
+        '    End If
 
 
-        Next
+        'Next
 
 
 
@@ -185,7 +196,7 @@ Public Class frmMemberRole
 
     Private Sub lstMem_Click(sender As Object, e As EventArgs) Handles lstMem.SelectedIndexChanged, cboSemester.SelectedIndexChanged
         grpSemester.Enabled = True
-        cbTest.Items.Clear()
+
 
         If lstMem.SelectedIndex = -1 Then
             Exit Sub
@@ -212,6 +223,10 @@ Public Class frmMemberRole
             semester = "sp17"
         End If
 
+        If cboSemester.SelectedItem.ToString = "" Then
+            semester = "fa16"
+        End If
+
 
 
         loadSelectedRecord(lstMem.SelectedItem.ToString, semester)
@@ -232,17 +247,17 @@ Public Class frmMemberRole
                 lstRole.Items.Add(objDR.Item("RoleID"))
                 arrUserRoles.Add(objDR.Item("RoleID"))
                 count = count + 1
-                lstRole.SetItemChecked(count, True)
+                'lstRole.SetItemChecked(count, True)
 
             End While
 
-            For i = 0 To lstRole.Items.Count - 1
-                If arrUserRoles.Contains(lstRole.Items(i)) Then
-                    lstRole.SetItemChecked(i, True)
-                End If
+            'For i = 0 To lstRole.Items.Count - 1
+            '    If arrUserRoles.Contains(lstRole.Items(i)) Then
+            '        lstRole.SetItemChecked(i, True)
+            '    End If
 
 
-            Next
+            'Next
             objDR.Close()
         Catch ex As Exception
             MessageBox.Show("Error displaying data" & ex.ToString, " Error loading", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -254,9 +269,12 @@ Public Class frmMemberRole
         Dim blnChange As Boolean
         Dim semester As String = getSemester(semester)
         Dim objDR
+        Dim i As Integer
 
+        'clears the array list.
+        arrUserRolesAfter = New ArrayList
         ' loop to get the changes the user made
-        For i = 0 To lstRole.Items.Count - 1
+        For i = 0 To 6
             If lstRole.GetItemChecked(i) = True Then
                 arrUserRolesAfter.Add(lstRole.Items(i).ToString)
 
@@ -267,13 +285,14 @@ Public Class frmMemberRole
         Try
             For i = 0 To arrUserRoles.Count - 1
                 For j = 0 To arrUserRolesAfter.Count - 1
-                    If arrUserRoles.Item(i).Equals(arrUserRolesAfter.Item(j)) Then ' when it is false, we will remove the role form the table
-                        objDR = objMemberRole.removeRole(cbPID.SelectedItem.ToString, arrUserRolesAfter.Item(i), semester)
+                    If Not arrUserRoles.Item(i).Equals(arrUserRolesAfter.Item(j)) Then ' when it is true, we will remove the role form the table
+                        objDR = objMemberRole.removeRole(cbPID.SelectedItem.ToString, arrUserRoles.Item(i), semester)
                     End If
 
                 Next
 
             Next
+
         Catch ex As Exception
             MessageBox.Show("Error removing role" & ex.ToString, "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
 
@@ -287,15 +306,21 @@ Public Class frmMemberRole
 
 
             For i = 0 To arrUserRolesAfter.Count - 1
-                objDR = objMemberRole.SaveRoles(cbPID.SelectedItem.ToString, arrUserRolesAfter.Item(i), semester)
-                cbTest.Items.Add(cbPID.SelectedItem.ToString & arrUserRolesAfter.Item(i) & semester)
+                objMemberRole.SaveRoles(cbPID.SelectedItem.ToString, arrUserRolesAfter.Item(i), semester)
+
+
+
             Next
 
         Catch ex As Exception
-            MessageBox.Show("Error removing role" & ex.ToString, "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show("Error saving role" & lstRole.Items.Count, "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
 
 
+        'confirmation for the user.
+        'MessageBox.Show("Success", "Program Sucess", MessageBoxButtons.OK, MessageBoxIcon.None)
+        'loadSelectedRecord(lstMem.SelectedItem.ToString, cboSemester.SelectedItem.ToString)
+        cbADD.Checked = False ' 
 
 
 
@@ -320,11 +345,11 @@ Public Class frmMemberRole
         If cboSemester.SelectedItem.ToString = "Spring 2017" Then
             Semester = "sp17"
         End If
+        If cboSemester.SelectedItem.ToString = "" Then
+            Semester = "fa16"
+        End If
 
         Return Semester
     End Function
-    Private Sub btnFinish_Click(sender As Object, e As EventArgs) Handles btnFinish.Click
 
-
-    End Sub
 End Class

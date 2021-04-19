@@ -153,6 +153,7 @@ Public Class CMemberRole
         params.Add(New SqlParameter("PID", strPID))
         params.Add(New SqlParameter("RoleID", strRoleID))
         params.Add(New SqlParameter("SemesterID", strSemester))
+        myDB.execSP("sp_deleteRole", params)
 
 
     End Function

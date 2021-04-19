@@ -56,7 +56,6 @@ Partial Class frmMemberRole
         Me.btnAdding = New System.Windows.Forms.Button()
         Me.grpPID = New System.Windows.Forms.GroupBox()
         Me.cbPID = New System.Windows.Forms.ComboBox()
-        Me.cbTest = New System.Windows.Forms.ComboBox()
         Me.btnFinish = New System.Windows.Forms.Button()
         Me.grpMembers.SuspendLayout()
         Me.grpSemester.SuspendLayout()
@@ -364,14 +363,6 @@ Partial Class frmMemberRole
         Me.cbPID.Size = New System.Drawing.Size(226, 21)
         Me.cbPID.TabIndex = 0
         '
-        'cbTest
-        '
-        Me.cbTest.FormattingEnabled = True
-        Me.cbTest.Location = New System.Drawing.Point(442, 354)
-        Me.cbTest.Name = "cbTest"
-        Me.cbTest.Size = New System.Drawing.Size(244, 21)
-        Me.cbTest.TabIndex = 9
-        '
         'btnFinish
         '
         Me.btnFinish.Location = New System.Drawing.Point(724, 531)
@@ -387,7 +378,6 @@ Partial Class frmMemberRole
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1088, 712)
         Me.Controls.Add(Me.btnFinish)
-        Me.Controls.Add(Me.cbTest)
         Me.Controls.Add(Me.grpPID)
         Me.Controls.Add(Me.btnAdding)
         Me.Controls.Add(Me.cbADD)
@@ -442,6 +432,5 @@ Partial Class frmMemberRole
     Friend WithEvents cboSemester As ComboBox
     Friend WithEvents grpPID As GroupBox
     Friend WithEvents cbPID As ComboBox
-    Friend WithEvents cbTest As ComboBox
     Friend WithEvents btnFinish As Button
 End Class
