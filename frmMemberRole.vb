@@ -73,6 +73,7 @@ Public Class frmMemberRole
 
         grpRole.Enabled = False
         grpSemester.Enabled = False
+        cbADD.Enabled = False
 
     End Sub
 #Region "Toolbar"
@@ -201,6 +202,9 @@ Public Class frmMemberRole
 
     Private Sub lstMem_Click(sender As Object, e As EventArgs) Handles lstMem.SelectedIndexChanged, cboSemester.SelectedIndexChanged
         grpSemester.Enabled = True
+        If Not cboSemester.SelectedIndex = -1 Then
+            cbADD.Enabled = True
+        End If
 
 
         If lstMem.SelectedIndex = -1 Then
@@ -239,7 +243,7 @@ Public Class frmMemberRole
 
     Private Sub loadSelectedRecord(strMember As String, strSemester As String)
         lstRole.Items.Clear()
-
+        arrUserRoles.Clear()
 
         cbADD.Checked = False
         grpRole.Enabled = False
@@ -277,7 +281,7 @@ Public Class frmMemberRole
         Dim semester As String = getSemester(semester)
         Dim objDR
         Dim i As Integer
-        Dim message = True
+        Dim message = False
 
 
         'clears the array list.
@@ -306,26 +310,30 @@ Public Class frmMemberRole
             End If
         Next
 
-        'must have member role to have admin or officer
+        ' must have member role to have admin Or officer
         For i = 0 To arrUserRolesAfter.Count - 1
             If (arrUserRolesAfter.Item(i).Equals("Admin")) Or (arrUserRolesAfter.Item(i).Equals("Officer")) Then
                 For j = 0 To arrUserRolesAfter.Count - 1
-                    If arrUserRolesAfter.Item(j).Equals("Member") Then
+                    If arrUserRolesAfter.Contains("Member") Then
                         message = False
-                        lstRole.SetItemChecked(i, False)
-                    End If
 
+                    Else
+                        message = True
+                    End If
 
 
                 Next
             End If
+            If message Then
+                MessageBox.Show("Must be a member to also have Admin or officerRole", "User Error", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+                cbADD.Checked = False
+                Exit Sub
+            End If
 
         Next
 
-        If message Then
-            MessageBox.Show("Must be a member to also have Admin or officerRole", "User Error", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            Exit Sub
-        End If
+
 
 
 
@@ -354,7 +362,7 @@ Public Class frmMemberRole
 
 
             For i = 0 To arrUserRolesAfter.Count - 1
-                Label2.Text = arrUserRolesAfter.Item(i)
+
                 objMemberRole.SaveRoles(cbPID.SelectedItem.ToString, arrUserRolesAfter.Item(i), semester)
             Next
 
@@ -402,10 +410,10 @@ Public Class frmMemberRole
 
     Private Sub btnReport_Click(sender As Object, e As EventArgs) Handles btnReport.Click
         Dim roleReport As New frmMemberRoleReport
-        'If lstMem.Items.Count = 0 Then
-        '    MessageBox.Show("There are no records to print")
-        '    Exit Sub
-        'End If
+        If lstMem.Items.Count = 0 Then
+            MessageBox.Show("There are no records to print")
+            Exit Sub
+        End If
         Me.Cursor = Cursors.WaitCursor
         roleReport.display()
         Me.Cursor = Cursors.Default

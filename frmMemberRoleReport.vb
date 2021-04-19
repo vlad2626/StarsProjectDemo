@@ -7,6 +7,7 @@ Public Class frmMemberRoleReport
     Private Sub frmMemberRoleReport_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         Me.rpvRoleReport.RefreshReport()
+        Me.rpvRoleReport.RefreshReport()
     End Sub
 
 

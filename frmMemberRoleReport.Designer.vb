@@ -23,29 +23,13 @@ Partial Class frmMemberRoleReport
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim ReportDataSource1 As Microsoft.Reporting.WinForms.ReportDataSource = New Microsoft.Reporting.WinForms.ReportDataSource()
-        Me.rpvRoleReport = New Microsoft.Reporting.WinForms.ReportViewer()
-        Me.CMemberRoleBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.btnClose = New System.Windows.Forms.Button()
+        Me.CMemberRoleBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.CRoleBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.rpvRoleReport = New Microsoft.Reporting.WinForms.ReportViewer()
         CType(Me.CMemberRoleBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.CRoleBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
-        '
-        'rpvRoleReport
-        '
-        Me.rpvRoleReport.AutoSize = True
-        ReportDataSource1.Name = "dsMemberRole"
-        ReportDataSource1.Value = Me.CMemberRoleBindingSource
-        Me.rpvRoleReport.LocalReport.DataSources.Add(ReportDataSource1)
-        Me.rpvRoleReport.LocalReport.ReportEmbeddedResource = "StarsOrg.rptMemberRole.rdlc"
-        Me.rpvRoleReport.Location = New System.Drawing.Point(19, 21)
-        Me.rpvRoleReport.Name = "rpvRoleReport"
-        Me.rpvRoleReport.ServerReport.BearerToken = Nothing
-        Me.rpvRoleReport.Size = New System.Drawing.Size(752, 374)
-        Me.rpvRoleReport.TabIndex = 0
-        '
-        'CMemberRoleBindingSource
-        '
-        Me.CMemberRoleBindingSource.DataSource = GetType(StarsOrg.CMemberRole)
         '
         'btnClose
         '
@@ -56,6 +40,22 @@ Partial Class frmMemberRoleReport
         Me.btnClose.Text = "Close"
         Me.btnClose.UseVisualStyleBackColor = True
         '
+        'CMemberRoleBindingSource
+        '
+        Me.CMemberRoleBindingSource.DataSource = GetType(StarsOrg.CMemberRole)
+        '
+        'CRoleBindingSource
+        '
+        Me.CRoleBindingSource.DataSource = GetType(StarsOrg.CRole)
+        '
+        'rpvRoleReport
+        '
+        Me.rpvRoleReport.Location = New System.Drawing.Point(28, 37)
+        Me.rpvRoleReport.Name = "rpvRoleReport"
+        Me.rpvRoleReport.ServerReport.BearerToken = Nothing
+        Me.rpvRoleReport.Size = New System.Drawing.Size(741, 354)
+        Me.rpvRoleReport.TabIndex = 2
+        '
         'frmMemberRoleReport
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -63,17 +63,17 @@ Partial Class frmMemberRoleReport
         Me.AutoSize = True
         Me.ClientSize = New System.Drawing.Size(800, 450)
         Me.ControlBox = False
-        Me.Controls.Add(Me.btnClose)
         Me.Controls.Add(Me.rpvRoleReport)
+        Me.Controls.Add(Me.btnClose)
         Me.Name = "frmMemberRoleReport"
         Me.Text = "frmMemberRoleReport"
         CType(Me.CMemberRoleBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.CRoleBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
-        Me.PerformLayout()
 
     End Sub
-
-    Friend WithEvents rpvRoleReport As Microsoft.Reporting.WinForms.ReportViewer
     Friend WithEvents CMemberRoleBindingSource As BindingSource
     Friend WithEvents btnClose As Button
+    Friend WithEvents CRoleBindingSource As BindingSource
+    Friend WithEvents rpvRoleReport As Microsoft.Reporting.WinForms.ReportViewer
 End Class
