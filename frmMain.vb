@@ -87,6 +87,8 @@
                 tsbSemester.PerformClick()
             Case ACTION_TUTOR
                 tsbTutor.PerformClick()
+            Case ACTION_MEMBERROLE
+                tsbMemRole.PerformClick()
             Case Else
                 MessageBox.Show("unexcpected case vallue  , perfrom next ation", " program error", MessageBoxButtons.OK, MessageBoxIcon.Error)
 
@@ -96,5 +98,13 @@
 
     Private Sub tsbLogout_Click(sender As Object, e As EventArgs) Handles tsbLogout.Click
         endProgram()
+    End Sub
+
+    Private Sub tsbMemRole_Click(sender As Object, e As EventArgs) Handles tsbMemRole.Click
+        Me.Hide()
+        frmMemberRole.ShowDialog()
+        Me.Show()
+        performNextAction()
+
     End Sub
 End Class

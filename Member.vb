@@ -21,9 +21,7 @@ Public Class Member
         objDr = myDB.getDataReaderBySP("sp_getAllMembers", Nothing)
         Return objDr
     End Function
-    Public Function addMember() As SqlDataAdapter
 
-    End Function
 
 
 End Class
