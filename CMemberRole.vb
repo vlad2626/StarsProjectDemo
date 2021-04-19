@@ -175,4 +175,9 @@ Public Class CMemberRole
             Return params
         End Get
     End Property
+
+    Public Function getReportData() As SqlDataAdapter
+        Return myDB.getDataAdapterBySp("dbo.sp_LoadAllMemberRoles", Nothing)
+    End Function
+
 End Class

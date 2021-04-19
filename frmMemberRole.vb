@@ -135,6 +135,7 @@ Public Class frmMemberRole
             Do While objDR.Read
                 arrAllRoles.Add(objDR.Item("RoleID"))
 
+
             Loop
 
             objDR.Close()
@@ -177,6 +178,11 @@ Public Class frmMemberRole
 
         For i = 0 To arrAllRoles.Count - 1
             lstRole.Items.Add(arrAllRoles.Item(i))
+            For j = 0 To arrUserRoles.Count - 1
+                If arrAllRoles.Item(i).Equals(arrUserRoles.Item(j)) Then
+                    lstRole.SetItemChecked(i, True)
+                End If
+            Next
         Next
 
 
@@ -187,7 +193,6 @@ Public Class frmMemberRole
 
 
         'Next
-
 
 
     End Sub
@@ -234,6 +239,8 @@ Public Class frmMemberRole
 
     Private Sub loadSelectedRecord(strMember As String, strSemester As String)
         lstRole.Items.Clear()
+
+
         cbADD.Checked = False
         grpRole.Enabled = False
         Dim objDR As SqlDataReader
@@ -247,7 +254,7 @@ Public Class frmMemberRole
                 lstRole.Items.Add(objDR.Item("RoleID"))
                 arrUserRoles.Add(objDR.Item("RoleID"))
                 count = count + 1
-                'lstRole.SetItemChecked(count, True)
+                lstRole.SetItemChecked(count, True)
 
             End While
 
@@ -270,16 +277,57 @@ Public Class frmMemberRole
         Dim semester As String = getSemester(semester)
         Dim objDR
         Dim i As Integer
+        Dim message = True
+
 
         'clears the array list.
         arrUserRolesAfter = New ArrayList
         ' loop to get the changes the user made
-        For i = 0 To 6
-            If lstRole.GetItemChecked(i) = True Then
-                arrUserRolesAfter.Add(lstRole.Items(i).ToString)
+        For i = 0 To lstRole.Items.Count - 1
+            If (lstRole.GetItemChecked(i)) Then
+                arrUserRolesAfter.Add(lstRole.Items(i))
+            End If
 
+        Next
+        'guest cannot be members
+        For i = 0 To arrUserRolesAfter.Count - 1
+            If arrUserRolesAfter.Item(i).Equals("Member") Then
+                For j = 0 To arrUserRolesAfter.Count - 1
+
+
+                    If arrUserRolesAfter.Item(j).Equals("Guest") Then
+                        arrUserRolesAfter.Remove(i)
+                        lstRole.SetItemChecked(i, False) ' reset both the guest and member checkbox so user has to make a choice
+                        lstRole.SetItemChecked(j, False)
+                        MessageBox.Show("Members cannot be guest", "UserError", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                        Exit Sub
+                    End If
+                Next
             End If
         Next
+
+        'must have member role to have admin or officer
+        For i = 0 To arrUserRolesAfter.Count - 1
+            If (arrUserRolesAfter.Item(i).Equals("Admin")) Or (arrUserRolesAfter.Item(i).Equals("Officer")) Then
+                For j = 0 To arrUserRolesAfter.Count - 1
+                    If arrUserRolesAfter.Item(j).Equals("Member") Then
+                        message = False
+                        lstRole.SetItemChecked(i, False)
+                    End If
+
+
+
+                Next
+            End If
+
+        Next
+
+        If message Then
+            MessageBox.Show("Must be a member to also have Admin or officerRole", "User Error", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Exit Sub
+        End If
+
+
 
         'nested loop to remove roles
         Try
@@ -306,10 +354,8 @@ Public Class frmMemberRole
 
 
             For i = 0 To arrUserRolesAfter.Count - 1
+                Label2.Text = arrUserRolesAfter.Item(i)
                 objMemberRole.SaveRoles(cbPID.SelectedItem.ToString, arrUserRolesAfter.Item(i), semester)
-
-
-
             Next
 
         Catch ex As Exception
@@ -317,9 +363,7 @@ Public Class frmMemberRole
         End Try
 
 
-        'confirmation for the user.
-        'MessageBox.Show("Success", "Program Sucess", MessageBoxButtons.OK, MessageBoxIcon.None)
-        'loadSelectedRecord(lstMem.SelectedItem.ToString, cboSemester.SelectedItem.ToString)
+
         cbADD.Checked = False ' 
 
 
@@ -329,6 +373,10 @@ Public Class frmMemberRole
 
 
     Private Function getSemester(Semester As String) As String
+
+        If cboSemester.SelectedIndex = -1 Then
+            Semester = "fa16"
+        End If
 
         If cboSemester.SelectedItem.ToString = "Fall 2016" Then
             Semester = "fa16"
@@ -345,11 +393,23 @@ Public Class frmMemberRole
         If cboSemester.SelectedItem.ToString = "Spring 2017" Then
             Semester = "sp17"
         End If
-        If cboSemester.SelectedItem.ToString = "" Then
+        If cboSemester.SelectedIndex = -1 Then
             Semester = "fa16"
         End If
 
         Return Semester
     End Function
+
+    Private Sub btnReport_Click(sender As Object, e As EventArgs) Handles btnReport.Click
+        Dim roleReport As New frmMemberRoleReport
+        'If lstMem.Items.Count = 0 Then
+        '    MessageBox.Show("There are no records to print")
+        '    Exit Sub
+        'End If
+        Me.Cursor = Cursors.WaitCursor
+        roleReport.display()
+        Me.Cursor = Cursors.Default
+
+    End Sub
 
 End Class

@@ -275,4 +275,16 @@ Public Class frmRole
     Private Sub btnAdd_Click(sender As Object, e As EventArgs) Handles btnAdd.Click
         objAdd.ShowDialog()
     End Sub
+
+    Private Sub btnReport_Click(sender As Object, e As EventArgs) Handles btnReport.Click
+        Dim roleReport As New frmRoleReport3
+        If lstRoles.Items.Count = 0 Then
+            MessageBox.Show("There are no records to print")
+            Exit Sub
+        End If
+        Me.Cursor = Cursors.WaitCursor
+        roleReport.display()
+        Me.Cursor = Cursors.Default
+
+    End Sub
 End Class

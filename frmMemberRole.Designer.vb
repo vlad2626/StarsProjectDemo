@@ -56,7 +56,7 @@ Partial Class frmMemberRole
         Me.btnAdding = New System.Windows.Forms.Button()
         Me.grpPID = New System.Windows.Forms.GroupBox()
         Me.cbPID = New System.Windows.Forms.ComboBox()
-        Me.btnFinish = New System.Windows.Forms.Button()
+        Me.btnReport = New System.Windows.Forms.Button()
         Me.grpMembers.SuspendLayout()
         Me.grpSemester.SuspendLayout()
         Me.grpRole.SuspendLayout()
@@ -328,7 +328,7 @@ Partial Class frmMemberRole
         'cbADD
         '
         Me.cbADD.AutoSize = True
-        Me.cbADD.Location = New System.Drawing.Point(48, 530)
+        Me.cbADD.Location = New System.Drawing.Point(431, 377)
         Me.cbADD.Name = "cbADD"
         Me.cbADD.Size = New System.Drawing.Size(110, 17)
         Me.cbADD.TabIndex = 5
@@ -337,7 +337,7 @@ Partial Class frmMemberRole
         '
         'btnAdding
         '
-        Me.btnAdding.Location = New System.Drawing.Point(568, 522)
+        Me.btnAdding.Location = New System.Drawing.Point(789, 527)
         Me.btnAdding.Name = "btnAdding"
         Me.btnAdding.Size = New System.Drawing.Size(119, 31)
         Me.btnAdding.TabIndex = 6
@@ -363,21 +363,21 @@ Partial Class frmMemberRole
         Me.cbPID.Size = New System.Drawing.Size(226, 21)
         Me.cbPID.TabIndex = 0
         '
-        'btnFinish
+        'btnReport
         '
-        Me.btnFinish.Location = New System.Drawing.Point(724, 531)
-        Me.btnFinish.Name = "btnFinish"
-        Me.btnFinish.Size = New System.Drawing.Size(88, 21)
-        Me.btnFinish.TabIndex = 10
-        Me.btnFinish.Text = "Submit"
-        Me.btnFinish.UseVisualStyleBackColor = True
+        Me.btnReport.Location = New System.Drawing.Point(940, 522)
+        Me.btnReport.Name = "btnReport"
+        Me.btnReport.Size = New System.Drawing.Size(111, 36)
+        Me.btnReport.TabIndex = 12
+        Me.btnReport.Text = "Report"
+        Me.btnReport.UseVisualStyleBackColor = True
         '
         'frmMemberRole
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1088, 712)
-        Me.Controls.Add(Me.btnFinish)
+        Me.Controls.Add(Me.btnReport)
         Me.Controls.Add(Me.grpPID)
         Me.Controls.Add(Me.btnAdding)
         Me.Controls.Add(Me.cbADD)
@@ -432,5 +432,5 @@ Partial Class frmMemberRole
     Friend WithEvents cboSemester As ComboBox
     Friend WithEvents grpPID As GroupBox
     Friend WithEvents cbPID As ComboBox
-    Friend WithEvents btnFinish As Button
+    Friend WithEvents btnReport As Button
 End Class
