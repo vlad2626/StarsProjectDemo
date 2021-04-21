@@ -2,17 +2,17 @@
 
 Public Class frmMemberRole
 
-    Private objMember As Member
-    Private objCMember As CMember
+    Private objMember As CMembers
+    ' Private objCMember As CMember
     Public objroles As CRoles
-    Private objSemester As CSemester
-    Private objMemberRole As CMemberRole
+    Private objSemesters As CSemesters
+    Private objMemberRoles As CMemberRoles
     Private arrUserRoles As ArrayList
     Private arrAllRoles As ArrayList
     Private arrUserRolesAfter As ArrayList
 
 
-    Private objAdd As frmMember
+    'Private objAdd As frmMember
     Private blnClearing As Boolean
     Private blnReloading As Boolean
 
@@ -20,11 +20,14 @@ Public Class frmMemberRole
         Dim objDR As SqlDataReader
         lstMem.Items.Clear()
         Try
-            objDR = objMember.getAllMembers()
+            'objDR = objMemberRoles.getAllMembers()
+            objDR = objMember.GetAllMembers()
             Do While objDR.Read
                 lstMem.Items.Add(objDR.Item("LName"))
-                cbPID.Items.Add(objDR.Item("PID"))
+
             Loop
+
+
             objDR.Close()
         Catch ex As Exception
             MessageBox.Show("showing members" & ex.ToString, "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -43,7 +46,7 @@ Public Class frmMemberRole
 
 
             Try
-                objDR = objSemester.getAllSemester()
+                objDR = objSemesters.getAllSemesters()
                 Do While objDR.Read
                     cboSemester.Items.Add(objDR.Item("SemesterDescription"))
                 Loop
@@ -56,12 +59,13 @@ Public Class frmMemberRole
         End If
     End Sub
     Private Sub frmMemberRole_Load(sender As Object, e As EventArgs) Handles Me.Load
-        objMember = New Member(Nothing)
+
         objroles = New CRoles
-        objAdd = New frmMember
-        objSemester = New CSemester(Nothing)
-        objMemberRole = New CMemberRole
-        objCMember = New CMember
+
+        objSemesters = New CSemesters
+        objMemberRoles = New CMemberRoles
+        objMember = New CMembers
+
         arrUserRoles = New ArrayList
         arrAllRoles = New ArrayList
 
@@ -71,9 +75,11 @@ Public Class frmMemberRole
         loadRoles()
         loadSemester()
 
-        grpRole.Enabled = False
+        grpRole.Enabled = True
         grpSemester.Enabled = False
-        cbADD.Enabled = False
+
+        grpInfo.Enabled = True
+        grpInfo.Visible = True
 
     End Sub
 #Region "Toolbar"
@@ -129,20 +135,19 @@ Public Class frmMemberRole
 #End Region
     Private Sub loadRoles()
         Dim objDR As SqlDataReader
-        lstRole.Items.Clear()
+        clbRoles.Items.Clear()
 
         Try
             objDR = objroles.getAllRoles()
-            Do While objDR.Read
-                arrAllRoles.Add(objDR.Item("RoleID"))
 
-
-            Loop
+            While objDR.Read
+                clbRoles.Items.Add(objDR.Item("RoleID"))
+            End While
 
             objDR.Close()
 
         Catch ex As Exception
-            ' could have CDB throw the error and trap it here
+
         End Try
 
 
@@ -152,59 +157,14 @@ Public Class frmMemberRole
 
 
 
-    Private Sub cbADD_Click(sender As Object, e As EventArgs) Handles cbADD.Click, cbADD.CheckStateChanged
-
-        If cbADD.Checked = True Then
-            grpSemester.Enabled = True
-            grpRole.Enabled = True
-            lstRole.Enabled = True
-            Dim index = -1
-
-            compareRoles()
-        Else
-            grpSemester.Enabled = True
-            grpRole.Enabled = True
-            lstRole.Enabled = False
-            lstRole.ScrollAlwaysVisible = True
-        End If
 
 
 
-    End Sub
-
-    Private Sub compareRoles()
-        lstRole.Items.Clear()
-        'adds all the users roles
-        Dim arrCont = New ArrayList
-
-        For i = 0 To arrAllRoles.Count - 1
-            lstRole.Items.Add(arrAllRoles.Item(i))
-            For j = 0 To arrUserRoles.Count - 1
-                If arrAllRoles.Item(i).Equals(arrUserRoles.Item(j)) Then
-                    lstRole.SetItemChecked(i, True)
-                End If
-            Next
-        Next
-
-
-        'For i = 0 To lstRole.Items.Count - 1
-        '    If arrUserRoles.Contains(lstRole.Items(i)) Then
-        '        lstRole.SetItemChecked(i, True)
-        '    End If
-
-
-        'Next
-
-
-    End Sub
 
 
 
     Private Sub lstMem_Click(sender As Object, e As EventArgs) Handles lstMem.SelectedIndexChanged, cboSemester.SelectedIndexChanged
         grpSemester.Enabled = True
-        If Not cboSemester.SelectedIndex = -1 Then
-            cbADD.Enabled = True
-        End If
 
 
         If lstMem.SelectedIndex = -1 Then
@@ -214,7 +174,10 @@ Public Class frmMemberRole
             Exit Sub
         End If
         Dim semester As String
-        cbPID.SelectedIndex = lstMem.SelectedIndex
+
+
+
+
 
         If cboSemester.SelectedItem.ToString = "Fall 2016" Then
             semester = "fa16"
@@ -242,34 +205,56 @@ Public Class frmMemberRole
     End Sub
 
     Private Sub loadSelectedRecord(strMember As String, strSemester As String)
-        lstRole.Items.Clear()
-        arrUserRoles.Clear()
-
-        cbADD.Checked = False
-        grpRole.Enabled = False
+        'clbRoles.Items.Clear()
+        'arrUserRoles.Clear()
+        ' clears the last user roles
+        For i = 0 To clbRoles.Items.Count - 1
+            clbRoles.SetItemChecked(i, False)
+        Next
+        'cbADD.Checked = False
+        'grpRole.Enabled = False
         Dim objDR As SqlDataReader
         Dim count = -1 ' counter for current index of the roles
 
-        objDR = objMemberRole.getAll(strMember, strSemester)
-        'objDR = objMemberRole.getAll(lstMem.SelectedItem.ToString)
+        'curent working way to get all roles
+        objDR = objMemberRoles.getAllMemberRolesBySemester(strMember, strSemester)
+
+
+
+        'objDR = objMemberRoles.getAllMemberRolesBySemester(lstMem.SelectedItem.ToString, strSemester)
         Try
 
+
+            ' this only loads 1 role for the user.
+            ' With objMemberRoles.CurrentObject
+            'While objDR.Read
+            '    clbRoles.Items.Add(objDR.Item("RoleID"))
+            '    lblPID.Text = ""   'pull from a variable
+            '    ' End With
+            'End While
+
+
+
+            'currently working to load all roles
+
             While objDR.Read
-                lstRole.Items.Add(objDR.Item("RoleID"))
-                arrUserRoles.Add(objDR.Item("RoleID"))
-                count = count + 1
-                lstRole.SetItemChecked(count, True)
+                For i = 0 To clbRoles.Items.Count - 1 ' iterate trough the roles
+                    If clbRoles.Items(i).Equals(objDR.Item("RoleID")) Then
+                        clbRoles.SetItemChecked(i, True)
+                    End If
+                    If clbRoles.GetItemChecked(i) Then ' if this is true it will add it to an arraylist of userRoles 
+                        arrUserRoles.Add(clbRoles.Items(i))
 
+                    End If
+                Next
+                lblPID.Text = objDR.Item("PID")
+                lblFirstName.Text = objDR.Item("FName")
+                lblLastName.Text = objDR.Item("LName")
             End While
-
-            'For i = 0 To lstRole.Items.Count - 1
-            '    If arrUserRoles.Contains(lstRole.Items(i)) Then
-            '        lstRole.SetItemChecked(i, True)
-            '    End If
-
-
-            'Next
             objDR.Close()
+
+
+
         Catch ex As Exception
             MessageBox.Show("Error displaying data" & ex.ToString, " Error loading", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
@@ -278,18 +263,28 @@ Public Class frmMemberRole
     Private Sub btnAdd_Click(sender As Object, e As EventArgs) Handles btnAdding.Click
 
         Dim blnChange As Boolean
-        Dim semester As String = getSemester(semester)
+        Dim semester As String
         Dim objDR
         Dim i As Integer
         Dim message = False
+        Dim intResult As Integer
+
+
+
+        objDR = objMemberRoles.getSemesterBySemesterID(cboSemester.SelectedItem.ToString)
+
+        While objDR.read
+            semester = objDR.item("SemesterID")
+        End While
+        objDR.close()
 
 
         'clears the array list.
         arrUserRolesAfter = New ArrayList
         ' loop to get the changes the user made
-        For i = 0 To lstRole.Items.Count - 1
-            If (lstRole.GetItemChecked(i)) Then
-                arrUserRolesAfter.Add(lstRole.Items(i))
+        For i = 0 To clbRoles.Items.Count - 1
+            If (clbRoles.GetItemChecked(i)) Then
+                arrUserRolesAfter.Add(clbRoles.Items(i))
             End If
 
         Next
@@ -301,8 +296,8 @@ Public Class frmMemberRole
 
                     If arrUserRolesAfter.Item(j).Equals("Guest") Then
                         arrUserRolesAfter.Remove(i)
-                        lstRole.SetItemChecked(i, False) ' reset both the guest and member checkbox so user has to make a choice
-                        lstRole.SetItemChecked(j, False)
+                        clbRoles.SetItemChecked(i, False) ' reset both the guest and member checkbox so user has to make a choice
+                        clbRoles.SetItemChecked(j, False)
                         MessageBox.Show("Members cannot be guest", "UserError", MessageBoxButtons.OK, MessageBoxIcon.Information)
                         Exit Sub
                     End If
@@ -327,14 +322,14 @@ Public Class frmMemberRole
             If message Then
                 MessageBox.Show("Must be a member to also have Admin or officerRole", "User Error", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
-                cbADD.Checked = False
+
                 Exit Sub
             End If
 
         Next
 
 
-
+        Dim remove
 
 
         'nested loop to remove roles
@@ -342,40 +337,37 @@ Public Class frmMemberRole
             For i = 0 To arrUserRoles.Count - 1
                 For j = 0 To arrUserRolesAfter.Count - 1
                     If Not arrUserRoles.Item(i).Equals(arrUserRolesAfter.Item(j)) Then ' when it is true, we will remove the role form the table
-                        objDR = objMemberRole.removeRole(cbPID.SelectedItem.ToString, arrUserRoles.Item(i), semester)
+                        objDR = objMemberRoles.removeRole(lblPID.Text, arrUserRoles.Item(i), semester)
                     End If
-
                 Next
-
             Next
-
         Catch ex As Exception
             MessageBox.Show("Error removing role" & ex.ToString, "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-
         End Try
-
 
         'this loop check the lenght of the checcked user array role before And after
         'if it is changed adds the new roles.
         Try
 
-
-
+            'this nested loop will check if the changes the user made and if it is a new one it will save it into the DB without 
+            'overwriting the old ones.
             For i = 0 To arrUserRolesAfter.Count - 1
+                For j = 0 To arrUserRoles.Count - 1
 
-                objMemberRole.SaveRoles(cbPID.SelectedItem.ToString, arrUserRolesAfter.Item(i), semester)
+                    If Not arrUserRolesAfter.Item(i).Equals(arrUserRoles.Item(j)) Then
+                        objMemberRoles.SaveRoles(lblPID.Text, arrUserRolesAfter.Item(i).ToString, semester)
+                    End If
+                Next
+                ' objMemberRoles.SaveRoles(cbPID.SelectedItem.ToString, arrUserRolesAfter.Item(i), semester)
             Next
 
         Catch ex As Exception
-            MessageBox.Show("Error saving role" & lstRole.Items.Count, "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show("Error saving role" & clbRoles.Items.Count, "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
 
+        'cbADD.Checked = False ' 
 
-
-        cbADD.Checked = False ' 
-
-
-
+        loadSelectedRecord(lstMem.SelectedItem.ToString, semester)
 
     End Sub
 
@@ -419,5 +411,6 @@ Public Class frmMemberRole
         Me.Cursor = Cursors.Default
 
     End Sub
+
 
 End Class

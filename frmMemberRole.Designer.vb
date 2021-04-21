@@ -28,7 +28,7 @@ Partial Class frmMemberRole
         Me.grpSemester = New System.Windows.Forms.GroupBox()
         Me.cboSemester = New System.Windows.Forms.ComboBox()
         Me.grpRole = New System.Windows.Forms.GroupBox()
-        Me.lstRole = New System.Windows.Forms.CheckedListBox()
+        Me.clbRoles = New System.Windows.Forms.CheckedListBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
         Me.ToolStripSeparator11 = New System.Windows.Forms.ToolStripSeparator()
@@ -52,16 +52,23 @@ Partial Class frmMemberRole
         Me.tsbHelp = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
         Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
-        Me.cbADD = New System.Windows.Forms.CheckBox()
         Me.btnAdding = New System.Windows.Forms.Button()
-        Me.grpPID = New System.Windows.Forms.GroupBox()
-        Me.cbPID = New System.Windows.Forms.ComboBox()
+        Me.grpInfo = New System.Windows.Forms.GroupBox()
         Me.btnReport = New System.Windows.Forms.Button()
+        Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
+        Me.tslLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.lblFirstName = New System.Windows.Forms.Label()
+        Me.lblPID = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.lblLastName = New System.Windows.Forms.Label()
         Me.grpMembers.SuspendLayout()
         Me.grpSemester.SuspendLayout()
         Me.grpRole.SuspendLayout()
         Me.ToolStrip1.SuspendLayout()
-        Me.grpPID.SuspendLayout()
+        Me.grpInfo.SuspendLayout()
+        Me.StatusStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'grpMembers
@@ -85,15 +92,16 @@ Partial Class frmMemberRole
         'grpSemester
         '
         Me.grpSemester.Controls.Add(Me.cboSemester)
-        Me.grpSemester.Location = New System.Drawing.Point(711, 137)
+        Me.grpSemester.Location = New System.Drawing.Point(711, 157)
         Me.grpSemester.Name = "grpSemester"
-        Me.grpSemester.Size = New System.Drawing.Size(340, 198)
+        Me.grpSemester.Size = New System.Drawing.Size(340, 100)
         Me.grpSemester.TabIndex = 1
         Me.grpSemester.TabStop = False
         Me.grpSemester.Text = "Semester"
         '
         'cboSemester
         '
+        Me.cboSemester.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboSemester.FormattingEnabled = True
         Me.cboSemester.Location = New System.Drawing.Point(24, 32)
         Me.cboSemester.Name = "cboSemester"
@@ -102,22 +110,22 @@ Partial Class frmMemberRole
         '
         'grpRole
         '
-        Me.grpRole.Controls.Add(Me.lstRole)
-        Me.grpRole.Location = New System.Drawing.Point(711, 350)
+        Me.grpRole.Controls.Add(Me.clbRoles)
+        Me.grpRole.Location = New System.Drawing.Point(711, 268)
         Me.grpRole.Name = "grpRole"
-        Me.grpRole.Size = New System.Drawing.Size(334, 164)
+        Me.grpRole.Size = New System.Drawing.Size(334, 256)
         Me.grpRole.TabIndex = 2
         Me.grpRole.TabStop = False
         Me.grpRole.Text = "Role"
         '
-        'lstRole
+        'clbRoles
         '
-        Me.lstRole.CheckOnClick = True
-        Me.lstRole.FormattingEnabled = True
-        Me.lstRole.Location = New System.Drawing.Point(24, 27)
-        Me.lstRole.Name = "lstRole"
-        Me.lstRole.Size = New System.Drawing.Size(289, 124)
-        Me.lstRole.TabIndex = 0
+        Me.clbRoles.CheckOnClick = True
+        Me.clbRoles.FormattingEnabled = True
+        Me.clbRoles.Location = New System.Drawing.Point(24, 27)
+        Me.clbRoles.Name = "clbRoles"
+        Me.clbRoles.Size = New System.Drawing.Size(289, 169)
+        Me.clbRoles.TabIndex = 0
         '
         'Label1
         '
@@ -325,62 +333,112 @@ Partial Class frmMemberRole
         Me.ToolStripButton1.Size = New System.Drawing.Size(23, 47)
         Me.ToolStripButton1.Text = "ToolStripButton1"
         '
-        'cbADD
-        '
-        Me.cbADD.AutoSize = True
-        Me.cbADD.Location = New System.Drawing.Point(431, 377)
-        Me.cbADD.Name = "cbADD"
-        Me.cbADD.Size = New System.Drawing.Size(110, 17)
-        Me.cbADD.TabIndex = 5
-        Me.cbADD.Text = "ADD NEW ROLE"
-        Me.cbADD.UseVisualStyleBackColor = True
-        '
         'btnAdding
         '
-        Me.btnAdding.Location = New System.Drawing.Point(789, 527)
+        Me.btnAdding.Location = New System.Drawing.Point(440, 493)
         Me.btnAdding.Name = "btnAdding"
         Me.btnAdding.Size = New System.Drawing.Size(119, 31)
         Me.btnAdding.TabIndex = 6
-        Me.btnAdding.Text = "ADD"
+        Me.btnAdding.Text = "Submit"
         Me.btnAdding.UseVisualStyleBackColor = True
         '
-        'grpPID
+        'grpInfo
         '
-        Me.grpPID.Controls.Add(Me.cbPID)
-        Me.grpPID.Enabled = False
-        Me.grpPID.Location = New System.Drawing.Point(431, 160)
-        Me.grpPID.Name = "grpPID"
-        Me.grpPID.Size = New System.Drawing.Size(256, 154)
-        Me.grpPID.TabIndex = 8
-        Me.grpPID.TabStop = False
-        Me.grpPID.Text = "PID"
-        '
-        'cbPID
-        '
-        Me.cbPID.FormattingEnabled = True
-        Me.cbPID.Location = New System.Drawing.Point(21, 29)
-        Me.cbPID.Name = "cbPID"
-        Me.cbPID.Size = New System.Drawing.Size(226, 21)
-        Me.cbPID.TabIndex = 0
+        Me.grpInfo.Controls.Add(Me.lblLastName)
+        Me.grpInfo.Controls.Add(Me.Label4)
+        Me.grpInfo.Controls.Add(Me.lblPID)
+        Me.grpInfo.Controls.Add(Me.lblFirstName)
+        Me.grpInfo.Controls.Add(Me.Label3)
+        Me.grpInfo.Controls.Add(Me.Label2)
+        Me.grpInfo.Enabled = False
+        Me.grpInfo.Location = New System.Drawing.Point(431, 157)
+        Me.grpInfo.Name = "grpInfo"
+        Me.grpInfo.Size = New System.Drawing.Size(256, 267)
+        Me.grpInfo.TabIndex = 8
+        Me.grpInfo.TabStop = False
+        Me.grpInfo.Text = "USER INFO"
         '
         'btnReport
         '
-        Me.btnReport.Location = New System.Drawing.Point(940, 522)
+        Me.btnReport.Location = New System.Drawing.Point(597, 493)
         Me.btnReport.Name = "btnReport"
-        Me.btnReport.Size = New System.Drawing.Size(111, 36)
+        Me.btnReport.Size = New System.Drawing.Size(108, 33)
         Me.btnReport.TabIndex = 12
         Me.btnReport.Text = "Report"
         Me.btnReport.UseVisualStyleBackColor = True
+        '
+        'StatusStrip1
+        '
+        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tslLabel1})
+        Me.StatusStrip1.Location = New System.Drawing.Point(0, 690)
+        Me.StatusStrip1.Name = "StatusStrip1"
+        Me.StatusStrip1.Size = New System.Drawing.Size(1088, 22)
+        Me.StatusStrip1.TabIndex = 14
+        Me.StatusStrip1.Text = "StatusStrip1"
+        '
+        'tslLabel1
+        '
+        Me.tslLabel1.AutoSize = False
+        Me.tslLabel1.Name = "tslLabel1"
+        Me.tslLabel1.Size = New System.Drawing.Size(500, 17)
+        '
+        'Label2
+        '
+        Me.Label2.Location = New System.Drawing.Point(6, 101)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(90, 30)
+        Me.Label2.TabIndex = 14
+        Me.Label2.Text = "First Name:"
+        '
+        'Label3
+        '
+        Me.Label3.Location = New System.Drawing.Point(8, 23)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(90, 30)
+        Me.Label3.TabIndex = 15
+        Me.Label3.Text = "PID"
+        '
+        'lblFirstName
+        '
+        Me.lblFirstName.BackColor = System.Drawing.Color.LightGray
+        Me.lblFirstName.Location = New System.Drawing.Point(104, 94)
+        Me.lblFirstName.Name = "lblFirstName"
+        Me.lblFirstName.Size = New System.Drawing.Size(93, 37)
+        Me.lblFirstName.TabIndex = 16
+        '
+        'lblPID
+        '
+        Me.lblPID.BackColor = System.Drawing.Color.LightGray
+        Me.lblPID.Location = New System.Drawing.Point(104, 16)
+        Me.lblPID.Name = "lblPID"
+        Me.lblPID.Size = New System.Drawing.Size(93, 37)
+        Me.lblPID.TabIndex = 17
+        '
+        'Label4
+        '
+        Me.Label4.Location = New System.Drawing.Point(6, 174)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(90, 30)
+        Me.Label4.TabIndex = 18
+        Me.Label4.Text = "First Name:"
+        '
+        'lblLastName
+        '
+        Me.lblLastName.BackColor = System.Drawing.Color.LightGray
+        Me.lblLastName.Location = New System.Drawing.Point(104, 167)
+        Me.lblLastName.Name = "lblLastName"
+        Me.lblLastName.Size = New System.Drawing.Size(93, 37)
+        Me.lblLastName.TabIndex = 19
         '
         'frmMemberRole
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1088, 712)
+        Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.btnReport)
-        Me.Controls.Add(Me.grpPID)
+        Me.Controls.Add(Me.grpInfo)
         Me.Controls.Add(Me.btnAdding)
-        Me.Controls.Add(Me.cbADD)
         Me.Controls.Add(Me.ToolStrip1)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.grpRole)
@@ -393,7 +451,9 @@ Partial Class frmMemberRole
         Me.grpRole.ResumeLayout(False)
         Me.ToolStrip1.ResumeLayout(False)
         Me.ToolStrip1.PerformLayout()
-        Me.grpPID.ResumeLayout(False)
+        Me.grpInfo.ResumeLayout(False)
+        Me.StatusStrip1.ResumeLayout(False)
+        Me.StatusStrip1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -404,7 +464,7 @@ Partial Class frmMemberRole
     Friend WithEvents grpRole As GroupBox
     Friend WithEvents Label1 As Label
     Friend WithEvents lstMem As ListBox
-    Friend WithEvents lstRole As CheckedListBox
+    Friend WithEvents clbRoles As CheckedListBox
     Friend WithEvents ToolStrip1 As ToolStrip
     Friend WithEvents ToolStripSeparator11 As ToolStripSeparator
     Friend WithEvents tsbHome As ToolStripButton
@@ -427,10 +487,16 @@ Partial Class frmMemberRole
     Friend WithEvents tsbHelp As ToolStripButton
     Friend WithEvents ToolStripSeparator1 As ToolStripSeparator
     Friend WithEvents ToolStripButton1 As ToolStripButton
-    Friend WithEvents cbADD As CheckBox
     Friend WithEvents btnAdding As Button
     Friend WithEvents cboSemester As ComboBox
-    Friend WithEvents grpPID As GroupBox
-    Friend WithEvents cbPID As ComboBox
+    Friend WithEvents grpInfo As GroupBox
     Friend WithEvents btnReport As Button
+    Friend WithEvents StatusStrip1 As StatusStrip
+    Friend WithEvents tslLabel1 As ToolStripStatusLabel
+    Friend WithEvents lblFirstName As Label
+    Friend WithEvents Label3 As Label
+    Friend WithEvents Label2 As Label
+    Friend WithEvents lblPID As Label
+    Friend WithEvents lblLastName As Label
+    Friend WithEvents Label4 As Label
 End Class

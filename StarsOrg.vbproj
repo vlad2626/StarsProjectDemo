@@ -97,21 +97,17 @@
   <ItemGroup>
     <Compile Include="CDB.vb" />
     <Compile Include="CMember.vb" />
+    <Compile Include="CMemberRoles.vb" />
     <Compile Include="CMemberRole.vb" />
+    <Compile Include="CMembers.vb" />
     <Compile Include="CRole.vb" />
     <Compile Include="CRoles.vb" />
-    <Compile Include="CSemester.vb" />
+    <Compile Include="CSemesters.vb" />
     <Compile Include="frmMain.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmMain.Designer.vb">
       <DependentUpon>frmMain.vb</DependentUpon>
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmMember.Designer.vb">
-      <DependentUpon>frmMember.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frmMember.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmMemberRole.Designer.vb">
@@ -132,7 +128,6 @@
     <Compile Include="frmRole.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Member.vb" />
     <Compile Include="ModDB.vb" />
     <Compile Include="modErrHandler.vb" />
     <Compile Include="modGlobal.vb" />
@@ -162,9 +157,6 @@
   <ItemGroup>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmMember.resx">
-      <DependentUpon>frmMember.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMemberRole.resx">
       <DependentUpon>frmMemberRole.vb</DependentUpon>

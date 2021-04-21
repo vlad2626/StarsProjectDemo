@@ -47,7 +47,7 @@ Public Class CRoles
         'objDR = myDB.getDataReaderBySP("sp_GetRoleByRoleID", params)
         ' Return objDR
 
-        FillObject(myDB.getDataReaderBySP("sp_GetRoleByRoleID", params))
+        FillObject(myDB.getDataReaderBySP("sp_GetAllRoles", params))
         Return _Role
     End Function
 

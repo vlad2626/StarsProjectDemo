@@ -2,8 +2,8 @@
 Public Class frmRole
 
     Public objroles As CRoles
-    Private objMember As Member
-    Private objAdd As frmMember
+    ' Private objMember As Member
+    'Private objAdd As frmMember
     Private blnClearing As Boolean
     Private blnReloading As Boolean
 
@@ -101,7 +101,7 @@ Public Class frmRole
         Try
             objDR = objroles.getAllRoles()
             Do While objDR.Read
-                lstRoles.Items.Add(objDR.Item("RoleID"))
+                lstRoles.Items.Add(objDR.Item("PID"))
             Loop
 
             objDR.Close()
@@ -117,31 +117,31 @@ Public Class frmRole
 
     End Sub
 
-    Private Sub showMembers()
-        Dim objDR As SqlDataReader
-        lstMembers.Items.Clear()
-        Try
-            objDR = objMember.getAllMembers()
-            Do While objDR.Read
-                lstMembers.Items.Add(objDR.Item("LName"))
-            Loop
-            objDR.Close()
-        Catch ex As Exception
-            MessageBox.Show("showing members" & ex.ToString, "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        End Try
-    End Sub
+    'Private Sub showMembers()
+    '    Dim objDR As SqlDataReader
+    '    lstMembers.Items.Clear()
+    '    Try
+    '        objDR = objMember.getAllMembers()
+    '        Do While objDR.Read
+    '            lstMembers.Items.Add(objDR.Item("LName"))
+    '        Loop
+    '        objDR.Close()
+    '    Catch ex As Exception
+    '        MessageBox.Show("showing members" & ex.ToString, "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+    '    End Try
+    'End Sub
 
     Private Sub frmRole_Load(sender As Object, e As EventArgs) Handles Me.Load
         objroles = New CRoles
-        objMember = New Member(Nothing)
-        objAdd = New frmMember
+        ' objMember = New Member(Nothing)
+        'objAdd = New frmMember
 
     End Sub
 
     Private Sub frmRole_Shown(sender As Object, e As EventArgs) Handles Me.Shown
         clearScreenCOntrols(Me)
         loadRoles()
-        showMembers()
+        'showMembers()
         grpEdit.Enabled = False
 
     End Sub
@@ -273,7 +273,7 @@ Public Class frmRole
     End Sub
 
     Private Sub btnAdd_Click(sender As Object, e As EventArgs) Handles btnAdd.Click
-        objAdd.ShowDialog()
+        '  objAdd.ShowDialog()
     End Sub
 
     Private Sub btnReport_Click(sender As Object, e As EventArgs) Handles btnReport.Click
